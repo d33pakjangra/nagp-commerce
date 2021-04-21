@@ -1,0 +1,57 @@
+@import "../../../../variable.scss";
+
+:host {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+}
+
+.bg-header {
+  background-color: $header-bg-color;
+  height: 50px;
+  box-shadow: 0px 0px 20px #bbbbbb;
+  padding: 0 25px;
+}
+
+.icon-menu-cal {
+  flex: 0 0 50px;
+  border-bottom: 2px solid transparent;
+
+  &.active {
+    border-bottom: 2px solid white;
+  }
+}
+
+.search-box-container {
+  flex: 0 0 45%;
+  .search-box {
+    background-color: $header-denim-color;
+    border: none;
+    border-radius: 5px;
+    margin: 8px 0;
+    display: flex;
+    flex: 1;
+    .search-input {
+      border: none;
+      background-color: transparent;
+      outline: none;
+      color: white;
+      font-size: 16px;
+    }
+    .icon-search-size {
+      flex: 0 0 40px;
+      color: $header-faded-blue;
+    }
+  }
+}
+
+.header-name {
+  color: white;
+  padding-left: 10px;
+  font-size: $header-font-size;
+}
+
+.icon-inner-cal {
+  color: $header-faded-blue;
+}

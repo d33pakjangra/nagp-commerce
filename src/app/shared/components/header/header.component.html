@@ -1,1 +1,30 @@
-<p>header works!</p>
+<div class="flex bg-header">
+  <div class="flex-1 flex">
+    <div class="flex-1 flex-center header-name">
+      {{ headerName }}
+    </div>
+  </div>
+  <div class="search-box-container flex">
+    <div class="search-box">
+      <div class="flex-center-all icon-search-size">
+        <i class="material-icons">search</i>
+      </div>
+      <div class="flex-1 flex-center">
+        <input id="searchText" type="text" autocomplete="off" class="full-width search-input" [(ngModel)]="searchText" placeholder="Search Products" />
+        <button *ngIf="searchText" class="icon-inner-cal" mat-icon-button (click)="clearSearch()">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 flex" style="flex-direction: row-reverse">
+    <div class="icon-menu-cal flex-center-all">
+      <button class="icon-inner-cal" mat-icon-button>
+        <mat-icon class="material-icons"> shopping_cart </mat-icon>
+      </button>
+      <button class="icon-inner-cal" mat-icon-button>
+        <mat-icon class="material-icons"> language </mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
