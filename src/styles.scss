@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./variable.scss";
 
 html,
 body {
@@ -7,4 +7,98 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body,
+div,
+ul,
+li,
+nav,
+p {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: $body-bg-color;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.hoverable {
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-height-vh {
+  height: 100vh;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-vertical {
+  flex-direction: column;
+}
+
+.flex-horizontal {
+  flex-direction: row;
+}
+
+.flex-hr-center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-center-all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.icon-button {
+  color: $icon-color;
+  :hover {
+    color: $icon-hover-color;
+  }
+}
+
+.icon-button-disabled {
+  color: $icon-disabled-color;
+  cursor: none;
 }
