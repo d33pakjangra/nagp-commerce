@@ -10,7 +10,7 @@
         <i class="material-icons">search</i>
       </div>
       <div class="flex-1 flex-center">
-        <input id="searchText" type="text" autocomplete="off" class="full-width search-input" [(ngModel)]="searchText" placeholder="Search Products" />
+        <input id="searchText" type="text" autocomplete="off" class="full-width search-input" [(ngModel)]="searchText" placeholder="{{ 'SEARCH_PRODUCTS' | translate }}" />
         <button *ngIf="searchText" class="icon-inner-cal" mat-icon-button (click)="clearSearch()">
           <i class="material-icons">close</i>
         </button>
@@ -22,9 +22,17 @@
       <button class="icon-inner-cal" mat-icon-button>
         <mat-icon class="material-icons"> shopping_cart </mat-icon>
       </button>
-      <button class="icon-inner-cal" mat-icon-button>
+      <button class="icon-inner-cal" mat-icon-button [matMenuTriggerFor]="menu" (click)="openLanguagesMenu()">
         <mat-icon class="material-icons"> language </mat-icon>
       </button>
+      <mat-menu #menu="matMenu" overlapTrigger="false">
+        <span>
+          <button mat-menu-item (click)="changeLanguage('en')">English (en)</button>
+        </span>
+        <span>
+          <button mat-menu-item (click)="changeLanguage('hin')">Hindi (hin)</button>
+        </span>
+      </mat-menu>
     </div>
   </div>
 </div>
