@@ -1,3 +1,11 @@
 {
+  "LOGIN": {
+    "FORM_DESC": "Enter login details",
+    "USERNAME": "Username",
+    "PASSWORD_REQUIRED": "Username is required",
+    "PASSWORD": "Password",
+    "USERNAME_REQUIRED": "Password is required",
+    "LOGIN": "LOGIN"
+  },
   "SEARCH_PRODUCTS": "Search Products"
 }

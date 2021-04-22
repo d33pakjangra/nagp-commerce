@@ -17,6 +17,11 @@
       </div>
     </div>
   </div>
+  <div class="flex-center-all" *ngIf="!isLoggedIn">
+    <button class="login-button" mat-raised-button color="secondary" (click)="navigateToLogin()">
+      <span>{{ "LOGIN.LOGIN" | translate }}</span>
+    </button>
+  </div>
   <div class="flex-1 flex" style="flex-direction: row-reverse">
     <div class="icon-menu-cal flex-center-all">
       <button class="icon-inner-cal" mat-icon-button>
@@ -33,6 +38,9 @@
           <button mat-menu-item (click)="changeLanguage('hin')">Hindi (hin)</button>
         </span>
       </mat-menu>
+      <button *ngIf="isLoggedIn" class="icon-inner-cal" mat-icon-button (click)="logout()">
+        <mat-icon class="material-icons"> logout </mat-icon>
+      </button>
     </div>
   </div>
 </div>

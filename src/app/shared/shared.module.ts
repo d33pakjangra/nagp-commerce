@@ -6,31 +6,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageLayoutComponent } from './components/page-layout/page-layout.component';
 import { RouterModule } from '@angular/router';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
-
-// AoT requires an exported function for factories
-export function HttpLoaderFactory(httpClient: HttpClient) {
-  return new TranslateHttpLoader(httpClient);
-}
+import { TranslateModule } from '@ngx-translate/core';
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, PageLayoutComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
-  ],
+  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
   entryComponents: [],
-  exports: [MaterialModule],
+  exports: [MaterialModule, CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
 })
 export class SharedModule {}

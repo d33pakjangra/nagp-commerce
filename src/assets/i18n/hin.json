@@ -1,3 +1,11 @@
 {
+  "LOGIN": {
+    "FORM_DESC": "लॉगिन विवरण दर्ज करें",
+    "USERNAME": "उपयोगकर्ता",
+    "USERNAME_REQUIRED": "उपयोगकर्ता नाम आवश्यक है",
+    "PASSWORD": "पासवर्ड",
+    "PASSWORD_REQUIRED": "पासवर्ड की आवश्यकता है",
+    "LOGIN": "लॉग इन करें"
+  },
   "SEARCH_PRODUCTS": "उत्पादों को खोजना"
 }

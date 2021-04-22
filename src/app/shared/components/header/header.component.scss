@@ -25,6 +25,7 @@
 
 .search-box-container {
   flex: 0 0 45%;
+  padding-right: 25px;
   .search-box {
     background-color: $header-denim-color;
     border: none;
@@ -54,4 +55,8 @@
 
 .icon-inner-cal {
   color: $header-faded-blue;
+}
+
+.login-button {
+  height: 34px;
 }

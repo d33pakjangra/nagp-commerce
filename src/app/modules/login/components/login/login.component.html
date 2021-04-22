@@ -1,0 +1,34 @@
+<div class="full-height-vh flex-center-all" style="background-color: #eee">
+  <div class="auth-ctr">
+    <mat-card class="auth-form">
+      <mat-card-title>
+        <div class="flex-center-all body-2" style="height: 40px">{{ "LOGIN.FORM_DESC" | translate }}</div>
+      </mat-card-title>
+      <mat-card-content>
+        <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="auth-form-row">
+            <mat-form-field class="full-width">
+              <mat-label>{{ "LOGIN.USERNAME" | translate }}</mat-label>
+              <input matInput name="username" autocomplete="off" formControlName="username" />
+              <mat-error *ngIf="this.loginForm.get('username').hasError('required')">{{ "LOGIN.PASSWORD_REQUIRED" | translate }}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="auth-form-row">
+            <mat-form-field class="full-width">
+              <mat-label>{{ "LOGIN.PASSWORD" | translate }}</mat-label>
+              <input matInput name="password" type="password" autocomplete="off" formControlName="password" />
+              <mat-error *ngIf="this.loginForm.get('password').hasError('required')">{{ "LOGIN.PASSWORD_REQUIRED" | translate }}</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="auth-form-row flex-center-all">
+            <button mat-raised-button color="primary" clear type="submit">
+              <span>{{ "LOGIN.LOGIN" | translate }}</span>
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
