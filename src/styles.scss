@@ -91,6 +91,14 @@ body {
   flex: 1;
 }
 
+.error-snackbar {
+  background: $error;
+}
+
+.success-snackbar {
+  background: $success;
+}
+
 .icon-button {
   color: $icon-color;
   :hover {
