@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Observer } from 'rxjs';
 import { EntityTypes } from '../constants';
 import { User } from '../models/user';
 import { IndexedDbService } from './indexed-db.service';
@@ -22,20 +22,25 @@ export class AuthService {
     //this.isLoggedIn = new BehaviorSubject<boolean>(loggedIn);
   }
 
-  login(username: string, password: string): Promise<boolean> {
-    return new Promise<boolean>((resolve) => {
+  login(username: string, password: string): Observable<boolean> {
+    return new Observable((observer: Observer<boolean>) => {
       let isValidUser = false;
-      this.indexedDbService.getAll<User>(EntityTypes.users).then((users) => {
-        isValidUser = users.some((user) => user.username == username && user.password == password);
-        this.logger.info('isValidUser: ', isValidUser);
+      this.indexedDbService.getAll<User>(EntityTypes.users).subscribe(
+        (users) => {
+          isValidUser = users.some((user) => user.username == username && user.password == password);
+          this.logger.info('isValidUser: ', isValidUser);
 
-        if (isValidUser) {
-          localStorage.setItem('isLoggedIn', 'Yes');
-          this.isLoggedIn.next(isValidUser);
+          if (isValidUser) {
+            localStorage.setItem('isLoggedIn', 'Yes');
+            this.isLoggedIn.next(isValidUser);
+          }
+
+          observer.next(isValidUser);
+        },
+        (error) => {
+          observer.error(error);
         }
-
-        resolve(isValidUser);
-      });
+      );
     });
   }
 

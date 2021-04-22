@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 import { EntityTypes } from '../constants';
 import { Product } from '../models/product';
 import { User } from '../models/user';
@@ -29,15 +30,25 @@ export class IndexedDbService {
     const baseUrl = '/assets/templates';
 
     this.http.get<Product[]>(`${baseUrl}/products.json`).subscribe((products: Product[]) => {
-      this.addUpdateItems(EntityTypes.products, products).then((success) => {
-        this.logger.info('products data seeded: ', success);
-      });
+      this.addUpdateItems(EntityTypes.products, products).subscribe(
+        (success) => {
+          this.logger.info('products data seeded: ', success);
+        },
+        (err) => {
+          this.logger.error(err);
+        }
+      );
     });
 
     this.http.get<User[]>(`${baseUrl}/users.json`).subscribe((users: User[]) => {
-      this.addUpdateItems(EntityTypes.users, users).then((success) => {
-        this.logger.info('users data seeded: ', success);
-      });
+      this.addUpdateItems(EntityTypes.users, users).subscribe(
+        (success) => {
+          this.logger.info('users data seeded: ', success);
+        },
+        (err) => {
+          this.logger.error(err);
+        }
+      );
     });
   }
 
@@ -45,8 +56,8 @@ export class IndexedDbService {
     indexedDB.deleteDatabase(this.dbName);
   }
 
-  addUpdateItems<T>(entityType: string, items: T[]) {
-    return new Promise<Boolean>((resolve) => {
+  addUpdateItems<T>(entityType: string, items: T[]): Observable<boolean> {
+    return new Observable((observer: Observer<boolean>) => {
       var connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
@@ -59,14 +70,19 @@ export class IndexedDbService {
         });
 
         transaction.oncomplete = () => {
-          resolve(true);
+          observer.next(true);
+          observer.complete();
+        };
+
+        transaction.onerror = () => {
+          observer.error(`error while putting item in indexed db store: ${transaction.error}`);
         };
       };
     });
   }
 
-  getAll<T>(entityType: string): Promise<T[]> {
-    return new Promise<T[]>((resolve) => {
+  getAll<T>(entityType: string): Observable<T[]> {
+    return new Observable((observer: Observer<T[]>) => {
       var connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
@@ -74,17 +90,44 @@ export class IndexedDbService {
 
         let transaction = database.transaction(entityType);
         var store = transaction.objectStore(entityType);
-        var getall = store.getAll();
+        var entities = store.getAll();
 
-        getall.onsuccess = (event: any) => {
-          resolve(event.target.result);
+        entities.onsuccess = (event: any) => {
+          observer.next(event.target.result);
+          observer.complete();
+        };
+
+        entities.onerror = () => {
+          observer.error(`error while getting items from indexed db store: ${entities.error}`);
         };
       };
     });
   }
 
-  deleteExistingItems(entityType: string, items: string[]) {
-    return new Promise<Boolean>((resolve) => {
+  getById<T>(entityType: string, id: number): Observable<T> {
+    return new Observable((observer: Observer<T>) => {
+      var connectionRequest = indexedDB.open(this.dbName);
+
+      connectionRequest.onsuccess = () => {
+        let database = connectionRequest.result;
+
+        let transaction = database.transaction(entityType);
+        var store = transaction.objectStore(entityType);
+        var entity = store.getKey(id);
+
+        entity.onsuccess = (event: any) => {
+          observer.next(event.target.result);
+          observer.complete();
+        };
+        entity.onerror = () => {
+          observer.error(`error while getting item from indexed db store: ${entity.error}`);
+        };
+      };
+    });
+  }
+
+  deleteExistingItems(entityType: string, items: string[]): Observable<boolean> {
+    return new Observable((observer: Observer<boolean>) => {
       var connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
@@ -99,11 +142,12 @@ export class IndexedDbService {
           });
 
           transaction.oncomplete = () => {
-            resolve(true);
+            observer.next(true);
+            observer.complete();
           };
         } catch (e) {
-          this.logger.log('error while deleting data', e);
-          resolve(false);
+          this.logger.error('error while deleting data', e);
+          observer.next(false);
         }
       };
     });

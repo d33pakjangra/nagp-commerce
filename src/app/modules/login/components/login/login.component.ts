@@ -35,14 +35,19 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value.username, this.loginForm.value.password).then((isLoggedIn: boolean) => {
-        if (isLoggedIn) {
-          this.notificationService.success('You have been logged in successfully');
-          this.router.navigate(['/'], { replaceUrl: true });
-        } else {
-          this.notificationService.danger('Your username or password is incorrect');
+      this.authService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(
+        (isLoggedIn: boolean) => {
+          if (isLoggedIn) {
+            this.notificationService.success('You have been logged in successfully');
+            this.router.navigate(['/'], { replaceUrl: true });
+          } else {
+            this.notificationService.danger('Your username or password is incorrect');
+          }
+        },
+        (error) => {
+          this.notificationService.danger(error);
         }
-      });
+      );
     }
   }
 }
