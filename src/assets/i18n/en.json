@@ -5,7 +5,14 @@
     "PASSWORD_REQUIRED": "Username is required",
     "PASSWORD": "Password",
     "USERNAME_REQUIRED": "Password is required",
-    "LOGIN": "LOGIN"
+    "LOGIN": "LOGIN",
+    "LOGOUT": "Logout"
   },
-  "SEARCH_PRODUCTS": "Search Products"
+  "PRODUCT": {
+    "SEARCH_PRODUCTS": "Search products",
+    "CART": "Cart"
+  },
+  "SHARED": {
+    "CHANGE_LANGUAGE": "Change language"
+  }
 }

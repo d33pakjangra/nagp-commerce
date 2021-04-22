@@ -5,7 +5,14 @@
     "USERNAME_REQUIRED": "उपयोगकर्ता नाम आवश्यक है",
     "PASSWORD": "पासवर्ड",
     "PASSWORD_REQUIRED": "पासवर्ड की आवश्यकता है",
-    "LOGIN": "लॉग इन करें"
+    "LOGIN": "लॉग इन करें",
+    "LOGOUT": "लॉग आउट"
   },
-  "SEARCH_PRODUCTS": "उत्पादों को खोजना"
+  "PRODUCT": {
+    "SEARCH_PRODUCTS": "उत्पादों को खोजना",
+    "CART": "कार्ट"
+  },
+  "SHARED": {
+    "CHANGE_LANGUAGE": "भाषा बदलें"
+  }
 }
