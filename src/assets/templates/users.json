@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "firstName": "Deepak",
+    "lastName": "Jangra",
+    "username": "deep",
+    "password": "deep",
+    "email": "d33pakjangra@gmail.com"
+  },
+  {
+    "id": 2,
+    "firstName": "Admin",
+    "lastName": "Admin",
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@nagpcommerce.com"
+  }
+]

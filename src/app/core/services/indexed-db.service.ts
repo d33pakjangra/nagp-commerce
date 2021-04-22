@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EntityTypes } from '../constants';
 import { Product } from '../models/product';
+import { User } from '../models/user';
 import { LoggerService } from './logger.service';
 
 @Injectable({
@@ -25,10 +26,17 @@ export class IndexedDbService {
   }
 
   seedDatabase() {
-    const url = '/assets/templates/products.json';
-    this.http.get<Product[]>(url).subscribe((products: Product[]) => {
+    const baseUrl = '/assets/templates';
+
+    this.http.get<Product[]>(`${baseUrl}/products.json`).subscribe((products: Product[]) => {
       this.addUpdateItems(EntityTypes.products, products).then((success) => {
-        this.logger.info('data seeded: ', success);
+        this.logger.info('products data seeded: ', success);
+      });
+    });
+
+    this.http.get<User[]>(`${baseUrl}/users.json`).subscribe((users: User[]) => {
+      this.addUpdateItems(EntityTypes.users, users).then((success) => {
+        this.logger.info('users data seeded: ', success);
       });
     });
   }
