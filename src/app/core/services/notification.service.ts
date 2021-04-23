@@ -7,14 +7,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class NotificationService {
   constructor(public snackBar: MatSnackBar) {}
 
-  success(message: string, options: { delay?: number } = {}) {
+  success(message: string, options: { delay?: number } = {}): void {
     this.snackBar.open(message, '', {
       panelClass: ['success-snackbar'],
       duration: options.delay || 3000,
     });
   }
 
-  danger(message: string, options: { delay?: number } = {}) {
+  danger(message: string, options: { delay?: number } = {}): void {
     this.snackBar.open(message, 'X', {
       panelClass: ['error-snackbar'],
       duration: options.delay || 3000,

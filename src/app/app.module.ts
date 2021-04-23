@@ -18,9 +18,10 @@ const translateModule = TranslateModule.forRoot({
 });
 
 // AoT requires an exported function for factories
-export function HttpLoaderFactory(httpClient: HttpClient) {
+export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(httpClient);
 }
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, CoreModule, translateModule],

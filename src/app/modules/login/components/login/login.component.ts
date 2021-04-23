@@ -14,9 +14,13 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private readonly authService: AuthService, private readonly router: Router, private readonly notificationService: NotificationService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router,
+    private readonly notificationService: NotificationService
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.subscribeLogin();
   }
 
-  subscribeLogin() {
+  subscribeLogin(): void {
     this.authService.isLoggedIn.pipe(untilDestroyed(this)).subscribe((isLoggedIn) => {
       if (isLoggedIn) {
         this.router.navigate(['/'], { replaceUrl: true });
@@ -33,7 +37,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
+  login(): void {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(
         (isLoggedIn: boolean) => {

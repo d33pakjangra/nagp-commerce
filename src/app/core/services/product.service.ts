@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { error } from 'node:console';
 import { Observable, Observer } from 'rxjs';
 import { EntityTypes } from '../constants';
 import { Product } from '../models/product';

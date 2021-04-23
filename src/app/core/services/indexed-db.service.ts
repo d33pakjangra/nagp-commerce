@@ -16,17 +16,19 @@ export class IndexedDbService {
     this.setupDatabase();
   }
 
-  private setupDatabase() {
-    var connectionRequest = indexedDB.open(this.dbName);
+  private setupDatabase(): void {
+    const connectionRequest = indexedDB.open(this.dbName);
     connectionRequest.onupgradeneeded = () => {
-      let db = connectionRequest.result;
-      for (let key in EntityTypes) {
-        db.createObjectStore(`${EntityTypes[key]}`, { keyPath: 'id' });
+      const db = connectionRequest.result;
+      for (const entityType in EntityTypes) {
+        if (EntityTypes.hasOwnProperty(entityType)) {
+          db.createObjectStore(`${EntityTypes[entityType]}`, { keyPath: 'id' });
+        }
       }
     };
   }
 
-  seedDatabase() {
+  seedDatabase(): void {
     const baseUrl = '/assets/templates';
 
     this.http.get<Product[]>(`${baseUrl}/products.json`).subscribe((products: Product[]) => {
@@ -52,19 +54,19 @@ export class IndexedDbService {
     });
   }
 
-  deleteDatabase() {
+  deleteDatabase(): void {
     indexedDB.deleteDatabase(this.dbName);
   }
 
   addUpdateItems<T>(entityType: string, items: T[]): Observable<boolean> {
     return new Observable((observer: Observer<boolean>) => {
-      var connectionRequest = indexedDB.open(this.dbName);
+      const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
-        let database = connectionRequest.result;
+        const database = connectionRequest.result;
 
-        let transaction = database.transaction(entityType, 'readwrite');
-        var store = transaction.objectStore(entityType);
+        const transaction = database.transaction(entityType, 'readwrite');
+        const store = transaction.objectStore(entityType);
         items.forEach((item) => {
           store.put(item);
         });
@@ -83,14 +85,14 @@ export class IndexedDbService {
 
   getAll<T>(entityType: string): Observable<T[]> {
     return new Observable((observer: Observer<T[]>) => {
-      var connectionRequest = indexedDB.open(this.dbName);
+      const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
-        let database = connectionRequest.result;
+        const database = connectionRequest.result;
 
-        let transaction = database.transaction(entityType);
-        var store = transaction.objectStore(entityType);
-        var entities = store.getAll();
+        const transaction = database.transaction(entityType);
+        const store = transaction.objectStore(entityType);
+        const entities = store.getAll();
 
         entities.onsuccess = (event: any) => {
           observer.next(event.target.result);
@@ -106,14 +108,14 @@ export class IndexedDbService {
 
   getById<T>(entityType: string, id: number): Observable<T> {
     return new Observable((observer: Observer<T>) => {
-      var connectionRequest = indexedDB.open(this.dbName);
+      const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
-        let database = connectionRequest.result;
+        const database = connectionRequest.result;
 
-        let transaction = database.transaction(entityType);
-        var store = transaction.objectStore(entityType);
-        var entity = store.getKey(id);
+        const transaction = database.transaction(entityType);
+        const store = transaction.objectStore(entityType);
+        const entity = store.getKey(id);
 
         entity.onsuccess = (event: any) => {
           observer.next(event.target.result);
@@ -128,14 +130,14 @@ export class IndexedDbService {
 
   deleteExistingItems(entityType: string, items: string[]): Observable<boolean> {
     return new Observable((observer: Observer<boolean>) => {
-      var connectionRequest = indexedDB.open(this.dbName);
+      const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
         try {
-          let database = connectionRequest.result;
+          const database = connectionRequest.result;
 
-          let transaction = database.transaction(entityType, 'readwrite');
-          var store = transaction.objectStore(entityType);
+          const transaction = database.transaction(entityType, 'readwrite');
+          const store = transaction.objectStore(entityType);
 
           items.forEach((item) => {
             store.delete(item);

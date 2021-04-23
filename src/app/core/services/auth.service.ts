@@ -15,11 +15,10 @@ export class AuthService {
     this.checkLogin();
   }
 
-  private checkLogin() {
+  private checkLogin(): void {
     const loginStatus = localStorage.getItem('isLoggedIn');
-    const loggedIn = loginStatus != null && loginStatus != undefined;
+    const loggedIn = loginStatus !== null && loginStatus !== undefined;
     this.isLoggedIn.next(loggedIn);
-    //this.isLoggedIn = new BehaviorSubject<boolean>(loggedIn);
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -27,7 +26,7 @@ export class AuthService {
       let isValidUser = false;
       this.indexedDbService.getAll<User>(EntityTypes.users).subscribe(
         (users) => {
-          isValidUser = users.some((user) => user.username == username && user.password == password);
+          isValidUser = users.some((user) => user.username === username && user.password === password);
           this.logger.info('isValidUser: ', isValidUser);
 
           if (isValidUser) {
@@ -44,7 +43,7 @@ export class AuthService {
     });
   }
 
-  logout() {
+  logout(): void {
     localStorage.clear();
     this.isLoggedIn.next(false);
   }

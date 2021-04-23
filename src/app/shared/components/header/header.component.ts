@@ -16,9 +16,9 @@ export class HeaderComponent implements OnInit {
   @ViewChild(MatMenuTrigger) languagesMenuTrigger: MatMenuTrigger;
   @ViewChild('searchText', { static: false }) searchControl: HTMLInputElement;
 
-  headerName: string = 'NAGP Commerce';
+  headerName = 'NAGP Commerce';
   searchText: string;
-  isLoggedIn: boolean = false;
+  isLoggedIn = false;
   public onSearchTextChanged = new Subject<string>();
 
   constructor(public translate: TranslateService, private readonly router: Router, private readonly authService: AuthService) {
@@ -27,30 +27,30 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  subscribeLogin() {
+  subscribeLogin(): void {
     this.authService.isLoggedIn.pipe(untilDestroyed(this)).subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
   }
 
-  clearSearch() {
+  clearSearch(): void {
     this.searchText = null;
     this.onSearchTextChanged.next(null);
   }
 
-  openLanguagesMenu() {
+  openLanguagesMenu(): void {
     this.languagesMenuTrigger.openMenu();
   }
 
-  changeLanguage(language: string) {
+  changeLanguage(language: string): void {
     this.translate.use(language);
   }
 
-  navigateToLogin() {
+  navigateToLogin(): void {
     this.router.navigate(['/login'], { replaceUrl: true });
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }
