@@ -10,9 +10,16 @@
   },
   "PRODUCT": {
     "SEARCH_PRODUCTS": "उत्पादों को यहां खोजें",
-    "CART": "कार्ट"
+    "PRICE": "कीमत",
+    "BRAND": "ब्रांड",
+    "CART": "कार्ट",
+    "ADD_TO_CART": "कार्ट में डालें",
+    "PRODUCT_DETAILS": "उत्पाद विवरण",
+    "DESCRIPTION": "विवरण",
+    "CATEGORY": "वर्ग"
   },
   "SHARED": {
-    "CHANGE_LANGUAGE": "भाषा बदलें"
+    "CHANGE_LANGUAGE": "भाषा बदलें",
+    "NAME": "नाम"
   }
 }

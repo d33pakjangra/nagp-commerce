@@ -115,7 +115,7 @@ export class IndexedDbService {
 
         const transaction = database.transaction(entityType);
         const store = transaction.objectStore(entityType);
-        const entity = store.getKey(id);
+        const entity = store.get(id);
 
         entity.onsuccess = (event: any) => {
           observer.next(event.target.result);

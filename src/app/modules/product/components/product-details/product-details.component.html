@@ -1,1 +1,47 @@
-<p>product-details works!</p>
+<br />
+<br />
+<br />
+<div class="container" *ngIf="product">
+  <div class="row">
+    <div class="col-sm-4">
+      <img [src]="product.imageUrl" [alt]="product.name" width="100%" class="img-fluid rounded" />
+      <div class="mt-2">
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="font-weight-bold"> {{ "PRODUCT.PRICE" | translate }} </span>
+            <span class="text-success">{{ product.price | currency: "INR":true }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <span class="font-weight-bold"> {{ "PRODUCT.BRAND" | translate }} </span>
+            <span class="text-success">{{ product.brand }}</span>
+          </li>
+        </ul>
+        <button mat-raised-button color="accent" (click)="addToCart(product)">
+          <mat-icon class="material-icons"> shopping_cart </mat-icon>&nbsp;
+          <span>{{ "PRODUCT.ADD_TO_CART" | translate }}</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="product-detail">
+        <h5 class="product-head mt-1">{{ "PRODUCT.PRODUCT_DETAILS" | translate }}</h5>
+        <table class="table" cellspacing="0" style="max-height: 28px">
+          <tbody>
+            <tr>
+              <th class="font-weight-bold">{{ "SHARED.NAME" | translate }}</th>
+              <td>{{ product.name }}</td>
+            </tr>
+            <tr>
+              <th class="font-weight-bold">{{ "PRODUCT.DESCRIPTION" | translate }}</th>
+              <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+              <th class="font-weight-bold">{{ "PRODUCT.CATEGORY" | translate }}</th>
+              <td>{{ product.category }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
