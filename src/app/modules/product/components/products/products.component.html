@@ -1,56 +1,51 @@
 <mat-drawer-container class="mat-drawer-container">
-  <mat-drawer mode="side" opened class="mat-drawer"
-    ><mat-accordion>
-      <mat-expansion-panel hideToggle [expanded]="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title> {{ "PRODUCT.CATEGORIES" | translate }} </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="category-item">
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title> {{ "PRODUCT.ELECTRONICS" | translate }} </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Smartphone')">{{
-                  "PRODUCT.SMARTPHONE" | translate
-                }}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Television')">{{
-                  "PRODUCT.TELEVISION" | translate
-                }}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Laptop')">{{
-                  "PRODUCT.LAPTOP" | translate
-                }}</mat-list-item>
-              </mat-list>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-        <div class="category-item">
-          <mat-accordion>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title> {{ "PRODUCT.FASHION" | translate }} </mat-panel-title>
-              </mat-expansion-panel-header>
-              <mat-list>
-                <mat-list-item class="clickable hoverable" (click)="filterByCategory('T-Shirt')">{{
-                  "PRODUCT.T-SHIRTS" | translate
-                }}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Shirt')">{{
-                  "PRODUCT.SHIRTS" | translate
-                }}</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Jeans')">{{
-                  "PRODUCT.JEANS" | translate
-                }}</mat-list-item>
-              </mat-list>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
+  <mat-drawer mode="side" opened class="mat-drawer">
+    <mat-list>
+      <mat-list-item class="font-weight-bold text-uppercase">{{ "PRODUCT.CATEGORIES" | translate }}</mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <div class="category-item">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ "PRODUCT.ELECTRONICS" | translate }} </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Smartphone')">{{
+              "PRODUCT.SMARTPHONE" | translate
+            }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Television')">{{
+              "PRODUCT.TELEVISION" | translate
+            }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Laptop')">{{
+              "PRODUCT.LAPTOP" | translate
+            }}</mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div class="category-item">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ "PRODUCT.FASHION" | translate }} </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list>
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('T-Shirt')">{{
+              "PRODUCT.T-SHIRTS" | translate
+            }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Shirt')">{{
+              "PRODUCT.SHIRTS" | translate
+            }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Jeans')">{{ "PRODUCT.JEANS" | translate }}</mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </mat-drawer>
   <mat-drawer-content class="mat-drawer-content">
     <div class="row">
