@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Product } from 'src/app/core/models/product';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ProductService } from 'src/app/core/services/product.service';
-
+@UntilDestroy()
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -18,13 +19,16 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts(): void {
-    this.productService.getAllProducts().subscribe(
-      (products) => {
-        this.products = products;
-      },
-      (error) => {
-        this.notificationService.danger(`Error while fetching products: ${error}`);
-      }
-    );
+    this.productService
+      .getAllProducts()
+      .pipe(untilDestroyed(this))
+      .subscribe(
+        (products) => {
+          this.products = products;
+        },
+        (error) => {
+          this.notificationService.danger(`Error while fetching products: ${error}`);
+        }
+      );
   }
 }

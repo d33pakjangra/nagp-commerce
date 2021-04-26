@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Product } from 'src/app/core/models/product';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ProductService } from 'src/app/core/services/product.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -26,14 +28,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetail(id: number): void {
-    this.productService.getProductById(id).subscribe(
-      (product) => {
-        this.product = product;
-      },
-      (error) => {
-        this.notificationService.danger(`Error while fetching product detail: ${error}`);
-      }
-    );
+    this.productService
+      .getProductById(id)
+      .pipe(untilDestroyed(this))
+      .subscribe(
+        (product) => {
+          this.product = product;
+        },
+        (error) => {
+          this.notificationService.danger(`Error while fetching product detail: ${error}`);
+        }
+      );
   }
 
   addToCart(product: Product): void {
