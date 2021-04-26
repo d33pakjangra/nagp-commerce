@@ -1,8 +1,8 @@
-<div class="full-height-vh flex-center-all" style="background-color: #eee">
+<div class="full-height-vh d-flex align-items-center justify-content-center" style="background-color: #eee">
   <div class="auth-ctr">
     <mat-card class="auth-form">
       <mat-card-title>
-        <div class="flex-center-all body-2" style="height: 40px">{{ "LOGIN.FORM_DESC" | translate }}</div>
+        <div class="d-flex align-items-center justify-content-center body-2" style="height: 40px">{{ "LOGIN.FORM_DESC" | translate }}</div>
       </mat-card-title>
       <mat-card-content>
         <form name="loginForm" [formGroup]="loginForm" (ngSubmit)="login()">
@@ -22,7 +22,7 @@
             </mat-form-field>
           </div>
 
-          <div class="auth-form-row flex-center-all">
+          <div class="auth-form-row d-flex align-items-center justify-content-center">
             <button mat-raised-button color="primary" clear type="submit">
               <span>{{ "LOGIN.LOGIN" | translate }}</span>
             </button>

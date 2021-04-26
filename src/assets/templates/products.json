@@ -86,5 +86,16 @@
     "color": "Blue",
     "price": "1000",
     "rating": "3"
+  },
+  {
+    "id": 9,
+    "category": "Television",
+    "name": "Xiaomi Mi TV Q1",
+    "description": "Xiaomi",
+    "imageUrl": "https://static.toiimg.com/thumb/msid-80753374,width-640,resizemode-4/80753374.jpg",
+    "brand": "Xiaomi",
+    "color": "Grey",
+    "price": "98000",
+    "rating": "5"
   }
 ]

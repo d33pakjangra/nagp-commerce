@@ -18,10 +18,22 @@
     "DESCRIPTION": "Description",
     "CATEGORY": "Category",
     "RATING": "Rating",
-    "COLOR": "Color"
+    "COLOR": "Color",
+    "CATEGORIES": "Categories",
+    "ELECTRONICS": "Electronics",
+    "SMARTPHONE": "Smartphone",
+    "TELEVISION": "Television",
+    "LAPTOP": "Laptop",
+    "FASHION": "Fashion",
+    "T-SHIRTS": "T-Shirts",
+    "SHIRTS": "Shirts",
+    "JEANS": "Jeans",
+    "ALL_PRODUCTS": "All products",
+    "NO_PRODUCTS_FOUND": "No products found.."
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
-    "NAME": "Name"
+    "NAME": "Name",
+    "SHOWING_RESULTS": "Showing results"
   }
 }

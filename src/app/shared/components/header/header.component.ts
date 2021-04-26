@@ -50,6 +50,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login'], { replaceUrl: true });
   }
 
+  navigateToHome(): void {
+    this.router.navigate(['/']);
+  }
+
   logout(): void {
     this.authService.logout();
   }

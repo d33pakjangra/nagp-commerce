@@ -1,12 +1,67 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-9">
-      <div class="row">
-        <div class="col-lg-4 p-2" *ngFor="let product of products">
-          <app-product [product]="product"></app-product>
+<mat-drawer-container class="mat-drawer-container">
+  <mat-drawer mode="side" opened class="mat-drawer"
+    ><mat-accordion>
+      <mat-expansion-panel hideToggle [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ "PRODUCT.CATEGORIES" | translate }} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="category-item">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title> {{ "PRODUCT.ELECTRONICS" | translate }} </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list>
+                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Smartphone')">{{
+                  "PRODUCT.SMARTPHONE" | translate
+                }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Television')">{{
+                  "PRODUCT.TELEVISION" | translate
+                }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Laptop')">{{
+                  "PRODUCT.LAPTOP" | translate
+                }}</mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
-      </div>
+        <div class="category-item">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title> {{ "PRODUCT.FASHION" | translate }} </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list>
+                <mat-list-item class="clickable hoverable" (click)="filterByCategory('T-Shirt')">{{
+                  "PRODUCT.T-SHIRTS" | translate
+                }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Shirt')">{{
+                  "PRODUCT.SHIRTS" | translate
+                }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item class="clickable hoverable" (click)="filterByCategory('Jeans')">{{
+                  "PRODUCT.JEANS" | translate
+                }}</mat-list-item>
+              </mat-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
+  <mat-drawer-content class="mat-drawer-content">
+    <div class="row">
+      <div class="col-md-12 p-2">{{ "SHARED.SHOWING_RESULTS" | translate }}: {{ showingResultsFor }}</div>
     </div>
-  </div>
-</div>
+    <div *ngIf="!displayedProducts || displayedProducts.length == 0" class="row justify-content-center">
+      <div>{{ "PRODUCT.NO_PRODUCTS_FOUND" | translate }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 p-2" *ngFor="let product of displayedProducts">
+        <app-product [product]="product"></app-product>
+      </div></div
+  ></mat-drawer-content>
+</mat-drawer-container>

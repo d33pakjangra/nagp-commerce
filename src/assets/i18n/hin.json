@@ -18,10 +18,22 @@
     "DESCRIPTION": "विवरण",
     "CATEGORY": "वर्ग",
     "RATING": " रेटिंग",
-    "COLOR": "रंग"
+    "COLOR": "रंग",
+    "CATEGORIES": "श्रेणियाँ",
+    "ELECTRONICS": "इलेक्ट्रानिक्स",
+    "SMARTPHONE": "स्मार्टफोन",
+    "TELEVISION": "टेलीविजन",
+    "LAPTOP": "लैपटॉप",
+    "FASHION": "फैशन",
+    "T-SHIRTS": "टी-शर्ट्स",
+    "SHIRTS": "शर्ट्स",
+    "JEANS": "जीन्स",
+    "ALL_PRODUCTS": "सभी प्रोडक्ट",
+    "NO_PRODUCTS_FOUND": "कोई उत्पाद नहीं मिला ।।"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "भाषा बदलें",
-    "NAME": "नाम"
+    "NAME": "नाम",
+    "SHOWING_RESULTS": "परिणाम दिखा रहा है"
   }
 }
