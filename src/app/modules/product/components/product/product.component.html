@@ -1,1 +1,18 @@
-<p>product works!</p>
+<mat-card appElevation raisedElevation="20" class="clickable" (click)="navigateToProductDetails()">
+  <mat-card-header>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.category }} By: {{ product.brand }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{ product.imageUrl }}" alt="{{ product.name }}" />
+  <mat-card-content>
+    <div class="d-flex">
+      <div class="p-2 text-success align-self-center price">{{ product.price | currency: "INR":true }}</div>
+      <div class="ml-auto p-2">
+        <div [ngClass]="'rating pl-2 rating-' + product.rating">
+          {{ product.rating }}
+          <mat-icon class="material-icons rating-icon"> star_rate </mat-icon>&nbsp;
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

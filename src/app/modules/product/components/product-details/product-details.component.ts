@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetail(id: number): void {
-    const x = this.productService.getProductById(id).subscribe(
+    this.productService.getProductById(id).subscribe(
       (product) => {
         this.product = product;
       },
@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
     );
   }
 
-  addToCart(product: Product) {
-    //this.productService.addToCart(product);
+  addToCart(product: Product): void {
+    // this.productService.addToCart(product);
   }
 }

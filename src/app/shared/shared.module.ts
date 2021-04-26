@@ -7,10 +7,20 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PageLayoutComponent } from './components/page-layout/page-layout.component';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { ElevationDirective } from './directives/elevation.directive';
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, PageLayoutComponent],
+  declarations: [HeaderComponent, FooterComponent, PageLayoutComponent, ElevationDirective],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
   entryComponents: [],
-  exports: [MaterialModule, CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
+  exports: [
+    MaterialModule,
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule,
+    TranslateModule,
+    ElevationDirective,
+  ],
 })
 export class SharedModule {}

@@ -1,7 +1,4 @@
-<br />
-<br />
-<br />
-<div class="container" *ngIf="product">
+<div class="container-fluid" *ngIf="product">
   <div class="row">
     <div class="col-sm-4">
       <img [src]="product.imageUrl" [alt]="product.name" width="100%" class="img-fluid rounded" />
@@ -14,6 +11,15 @@
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <span class="font-weight-bold"> {{ "PRODUCT.BRAND" | translate }} </span>
             <span class="text-success">{{ product.brand }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <span class="font-weight-bold"> {{ "PRODUCT.RATING" | translate }} </span>
+            <span>
+              <div [ngClass]="'rating pl-2 rating-' + product.rating">
+                {{ product.rating }}
+                <mat-icon class="material-icons rating-icon"> star_rate </mat-icon>&nbsp;
+              </div>
+            </span>
           </li>
         </ul>
         <button mat-raised-button color="accent" (click)="addToCart(product)">

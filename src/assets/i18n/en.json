@@ -16,7 +16,8 @@
     "ADD_TO_CART": "Add to Cart",
     "PRODUCT_DETAILS": "Product Details",
     "DESCRIPTION": "Description",
-    "CATEGORY": "Category"
+    "CATEGORY": "Category",
+    "RATING": "Rating"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",

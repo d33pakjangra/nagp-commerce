@@ -110,3 +110,33 @@ body {
   color: $icon-disabled-color;
   cursor: none;
 }
+
+.rating {
+  font-size: medium;
+  border-radius: 10%;
+}
+
+.rating-icon {
+  font-size: large;
+  padding-top: 5px;
+}
+
+.rating-5,
+.rating-4 {
+  background-color: $success;
+  color: $white;
+  height: 30px;
+}
+
+.rating-3 {
+  background-color: $warning;
+  color: $white;
+  height: 30px;
+}
+
+.rating-1,
+.rating-2 {
+  background-color: $error;
+  color: $white;
+  height: 30px;
+}
