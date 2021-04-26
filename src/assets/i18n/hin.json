@@ -6,7 +6,9 @@
     "PASSWORD": "पासवर्ड",
     "PASSWORD_REQUIRED": "पासवर्ड की आवश्यकता है",
     "LOGIN": "लॉग इन करें",
-    "LOGOUT": "लॉग आउट"
+    "LOGOUT": "लॉग आउट",
+    "LOGIN_SUCCESS": "आप सफलतापूर्वक लॉग इन हो गए हैं।",
+    "LOGIN_FAILED": "आपका यूज़रनेम या पासवर्ड गलत है।"
   },
   "PRODUCT": {
     "SEARCH_PRODUCTS": "उत्पादों को यहां खोजें",

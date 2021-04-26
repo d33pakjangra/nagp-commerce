@@ -6,7 +6,9 @@
     "PASSWORD": "Password",
     "USERNAME_REQUIRED": "Password is required",
     "LOGIN": "LOGIN",
-    "LOGOUT": "Logout"
+    "LOGOUT": "Logout",
+    "LOGIN_SUCCESS": "You have been logged in successfully.",
+    "LOGIN_FAILED": "Your username or password is incorrect."
   },
   "PRODUCT": {
     "SEARCH_PRODUCTS": "Search products here",

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly notificationService: NotificationService
+    private readonly notificationService: NotificationService,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -45,10 +47,10 @@ export class LoginComponent implements OnInit {
         .subscribe(
           (isLoggedIn: boolean) => {
             if (isLoggedIn) {
-              this.notificationService.success('You have been logged in successfully');
+              this.notificationService.success(this.translateService.instant('LOGIN.LOGIN_SUCCESS'));
               this.router.navigate(['/'], { replaceUrl: true });
             } else {
-              this.notificationService.danger('Your username or password is incorrect');
+              this.notificationService.danger(this.translateService.instant('LOGIN.LOGIN_FAILED'));
             }
           },
           (error) => {
