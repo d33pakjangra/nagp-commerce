@@ -17,7 +17,8 @@
     "PRODUCT_DETAILS": "Product Details",
     "DESCRIPTION": "Description",
     "CATEGORY": "Category",
-    "RATING": "Rating"
+    "RATING": "Rating",
+    "COLOR": "Color"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
