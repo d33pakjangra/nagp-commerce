@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -14,9 +14,11 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  returnUrl: string;
 
   constructor(
     private readonly authService: AuthService,
+    private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
     private readonly notificationService: NotificationService,
     private translateService: TranslateService
@@ -40,23 +42,26 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    if (this.loginForm.valid) {
-      this.authService
-        .login(this.loginForm.value.username, this.loginForm.value.password)
-        .pipe(untilDestroyed(this))
-        .subscribe(
-          (isLoggedIn: boolean) => {
-            if (isLoggedIn) {
-              this.notificationService.success(this.translateService.instant('LOGIN.LOGIN_SUCCESS'));
-              this.router.navigate(['/'], { replaceUrl: true });
-            } else {
-              this.notificationService.danger(this.translateService.instant('LOGIN.LOGIN_FAILED'));
+    this.activatedRoute.queryParamMap.subscribe((paramMap: any) => {
+      this.returnUrl = paramMap.params.returnUrl || '/';
+      if (this.loginForm.valid) {
+        this.authService
+          .login(this.loginForm.value.username, this.loginForm.value.password)
+          .pipe(untilDestroyed(this))
+          .subscribe(
+            (isLoggedIn: boolean) => {
+              if (isLoggedIn) {
+                this.notificationService.success(this.translateService.instant('LOGIN.LOGIN_SUCCESS'));
+                this.router.navigateByUrl(this.returnUrl);
+              } else {
+                this.notificationService.danger(this.translateService.instant('LOGIN.LOGIN_FAILED'));
+              }
+            },
+            (error) => {
+              this.notificationService.danger(error);
             }
-          },
-          (error) => {
-            this.notificationService.danger(error);
-          }
-        );
-    }
+          );
+      }
+    });
   }
 }
