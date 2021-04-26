@@ -14,23 +14,25 @@ export class ElevationDirective implements OnChanges {
     this.setElevation(this.defaultElevation);
   }
 
-  ngOnChanges(_changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     this.setElevation(this.defaultElevation);
   }
 
   @HostListener('mouseenter')
-  onMouseEnter() {
+  onMouseEnter(): void {
     this.setElevation(this.raisedElevation);
   }
 
   @HostListener('mouseleave')
-  onMouseLeave() {
+  onMouseLeave(): void {
     this.setElevation(this.defaultElevation);
   }
 
-  setElevation(amount: number) {
+  setElevation(amount: number): void {
     // remove all elevation classes
-    const classesToRemove = Array.from((<HTMLElement>this.element.nativeElement).classList).filter((c) => c.startsWith('mat-elevation-z'));
+    const classesToRemove = Array.from((this.element.nativeElement as HTMLElement).classList).filter((c) =>
+      c.startsWith('mat-elevation-z')
+    );
     classesToRemove.forEach((c) => {
       this.renderer.removeClass(this.element.nativeElement, c);
     });
