@@ -41,12 +41,18 @@
     "TOTAL_AMOUNT": "Total Amount",
     "FREE": "FREE",
     "ITEM": "Item",
-    "ITEMS": "Items"
+    "ITEMS": "Items",
+    "REMOVE_ITEM": "Remove Item",
+    "ARE_YOU_SURE": "Are you sure you want to remove this item from cart ?"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
     "NAME": "Name",
     "SHOWING_RESULTS": "Showing results",
-    "REMOVE": "Remove"
+    "REMOVE": "Remove",
+    "YES": "Yes",
+    "NO": "No",
+    "ARE_YOU_SURE": "Are you sure you want to delete this item ?",
+    "DELETE_CONFIRMATION": "Delete Confirmation"
   }
 }

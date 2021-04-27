@@ -8,8 +8,9 @@ import { PageLayoutComponent } from './components/page-layout/page-layout.compon
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ElevationDirective } from './directives/elevation.directive';
+import { DeleteConfirmationModalComponent } from './components/delete-confirmation-modal/delete-confirmation-modal.component';
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, PageLayoutComponent, ElevationDirective],
+  declarations: [HeaderComponent, FooterComponent, PageLayoutComponent, ElevationDirective, DeleteConfirmationModalComponent],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
   entryComponents: [],
   exports: [

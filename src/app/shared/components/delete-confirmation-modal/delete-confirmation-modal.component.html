@@ -1,0 +1,11 @@
+<div class="mat-body-2 d-flex align-content-center pb-2 font-weight-bold">
+  {{ data.header || "SHARED.DELETE_CONFIRMATION" | translate }}
+</div>
+<div class="mat-body-1 d-flex justify-content-between align-content-center" style="height: 80px">
+  {{ data.message || "SHARED.ARE_YOU_SURE" | translate }}
+</div>
+<div class="d-flex justify-content-end align-content-end">
+  <button mat-raised-button color="warn" (click)="yesClick()">{{ "SHARED.YES" | translate }}</button>
+  &nbsp;&nbsp;
+  <button mat-button (click)="noClick()">{{ data.cancelButtonText || "SHARED.NO" | translate }}</button>
+</div>
