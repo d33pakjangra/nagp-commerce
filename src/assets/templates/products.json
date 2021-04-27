@@ -97,5 +97,27 @@
     "color": "Grey",
     "price": "98000",
     "rating": "5"
+  },
+  {
+    "id": 10,
+    "category": "Laptop",
+    "name": "Dell Inspiron",
+    "description": "Dell Inspiron 15 5000 Intel Core i7-1165G7 15.6-Inch 1080p Laptop w/ 12GB DDR4 RAM and 512GB M.2 NVMe SSD for $679.99 from Dell with promo code 50OFF699 (List price $879.99) Apple Mac Mini M1 Chip w/ 8GB RAM and 512GB SSD for $849.99 from Amazon (List price $899.00) Echo Show 8 8-Inch Smart Display for $74.99 from Amazon (List price $129.99)",
+    "imageUrl": "https://www.extremetech.com/wp-content/uploads/2020/12/Dell-Inspiron-15-5000-Intel-Core-i7-1165G7-15_6-Inch-1080p-Laptop-640x360.jpg",
+    "brand": "Dell",
+    "color": "Grey",
+    "price": "78000",
+    "rating": "5"
+  },
+  {
+    "id": 11,
+    "category": "Jeans",
+    "name": "Blue Denim",
+    "description": "A quick, go-to item for off-duty days and denims. They can easily be thrown on without a turnaround and that simplicity makes them a vital item for every woman’s closet. If you’re guilty of consistently pairing your skinny jeans with an identical T-shirt, it's time for some styling inspiration. You’ll be amazed at just how stylish your denims can look when paired perfectly.",
+    "imageUrl": "https://s3.ap-southeast-1.amazonaws.com/meesho-static-ethinos/s3fs-public/2020-04/Ways-To-Ace-The-Skinny-Denim-Look-By-Flaunting-Your-Style-Cover-images.png?TErbv0ip4YBeC69BwrveRgZ0px3eX4gL",
+    "brand": "Meesho",
+    "color": "Blue",
+    "price": "2200",
+    "rating": "4"
   }
 ]
