@@ -14,22 +14,17 @@ export class CartService {
 
   addProductToCart(cartItem: CartItem): Observable<boolean> {
     return new Observable((observer: Observer<boolean>) => {
-      this.getProductFromCartById(cartItem.id).subscribe((product) => {
-        if (product) {
-          cartItem.quantity = product.quantity + 1;
-        }
-        this.indexedDbService
-          .addUpdateItems<CartItem>(EntityTypes.cartItems, [cartItem])
-          .subscribe(
-            (success) => {
-              this.onCartUpdate.next(success);
-              observer.next(success);
-            },
-            (error) => {
-              observer.error(error);
-            }
-          );
-      });
+      this.indexedDbService
+        .addUpdateItems<CartItem>(EntityTypes.cartItems, [cartItem])
+        .subscribe(
+          (success) => {
+            this.onCartUpdate.next(success);
+            observer.next(success);
+          },
+          (error) => {
+            observer.error(error);
+          }
+        );
     });
   }
 
@@ -57,5 +52,9 @@ export class CartService {
         }
       );
     });
+  }
+
+  removeCartItemById(id: string): void {
+    this.indexedDbService.deleteItemByKey(EntityTypes.cartItems, id).subscribe((success) => {});
   }
 }

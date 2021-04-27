@@ -26,4 +26,13 @@ export class CartComponent implements OnInit {
         this.cartItems = cartItems;
       });
   }
+
+  removeCartItem(id: string): void {
+    this.cartService.removeCartItemById(id);
+    this.cartItems = this.cartItems.filter((cartItem) => cartItem.id !== id);
+  }
+
+  changeProductQuantity(cartItem: CartItem) {
+    this.cartService.addProductToCart(cartItem).subscribe((success) => {});
+  }
 }

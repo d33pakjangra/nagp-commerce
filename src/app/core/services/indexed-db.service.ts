@@ -154,4 +154,29 @@ export class IndexedDbService {
       };
     });
   }
+
+  deleteItemByKey(entityType: string, id: string): Observable<boolean> {
+    return new Observable((observer: Observer<boolean>) => {
+      const connectionRequest = indexedDB.open(this.dbName);
+
+      connectionRequest.onsuccess = () => {
+        try {
+          const database = connectionRequest.result;
+
+          const transaction = database.transaction(entityType, 'readwrite');
+          const store = transaction.objectStore(entityType);
+
+          store.delete(id);
+
+          transaction.oncomplete = () => {
+            observer.next(true);
+            observer.complete();
+          };
+        } catch (e) {
+          this.logger.error('error while deleting data', e);
+          observer.next(false);
+        }
+      };
+    });
+  }
 }

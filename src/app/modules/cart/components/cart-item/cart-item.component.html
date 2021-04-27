@@ -1,9 +1,11 @@
 <mat-card>
   <mat-card-content>
     <div class="d-flex row">
-      <div class="col-md-4"><img [src]="cartItem.imageUrl" [alt]="cartItem.name" width="100%" class="img-fluid rounded" /></div>
+      <div class="col-md-4 clickable" (click)="navigateToProductDetails()">
+        <img [src]="cartItem.imageUrl" [alt]="cartItem.name" width="100%" class="img-fluid rounded" />
+      </div>
       <div class="col-md-8">
-        <span class="text-uppercase font-weight-bold pb-1">{{ cartItem.name }}</span>
+        <span class="text-uppercase font-weight-bold pb-1 clickable" (click)="navigateToProductDetails()">{{ cartItem.name }}</span>
         <div class="pb-3 text-secondary">
           {{ "PRODUCT.SELLER" | translate }}: <span class="text-uppercase">{{ cartItem.seller }}</span>
         </div>
@@ -11,14 +13,14 @@
           {{ cartItem.price * cartItem.quantity | currency: "INR":true }}
         </div>
         <div class="mt-4 d-flex">
-          <button mat-icon-button>
+          <button mat-icon-button (click)="decreaseProductQuantity()">
             <mat-icon class="material-icons"> remove_circle_outline </mat-icon>
           </button>
           <input class="item-quantity" type="text" autocomplete="off" [(ngModel)]="cartItem.quantity" />
-          <button mat-icon-button>
+          <button mat-icon-button (click)="increaseProductQuantity()">
             <mat-icon class="material-icons"> add_circle_outline </mat-icon>
           </button>
-          <button mat-button class="ml-auto">
+          <button mat-button class="ml-auto" (click)="removeCartItem()">
             <mat-icon class="material-icons"> remove_shopping_cart </mat-icon>&nbsp;
             <span>{{ "SHARED.REMOVE" | translate }}</span>
           </button>

@@ -6,7 +6,11 @@
         <mat-divider></mat-divider>
         <div class="row">
           <div class="col-md-12 pb-1" *ngFor="let cartItem of cartItems">
-            <app-cart-item [cartItem]="cartItem"></app-cart-item>
+            <app-cart-item
+              [cartItem]="cartItem"
+              (onRemoveCartItem)="removeCartItem($event)"
+              (onQuantityChange)="changeProductQuantity($event)"
+            ></app-cart-item>
           </div>
         </div>
       </mat-list>
@@ -15,7 +19,7 @@
       <mat-list>
         <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.PRICE_DETAILS" | translate }}</mat-list-item>
         <mat-divider></mat-divider>
-        <app-price-details></app-price-details>
+        <app-price-details [cartItems]="cartItems"></app-price-details>
       </mat-list>
     </div>
   </div>
