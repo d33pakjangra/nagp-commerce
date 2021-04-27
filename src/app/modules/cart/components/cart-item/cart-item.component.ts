@@ -52,4 +52,12 @@ export class CartItemComponent implements OnInit {
     this.cartItem.quantity = this.cartItem.quantity - 1;
     this.quantityChange.next(this.cartItem);
   }
+
+  disableDecreaseQuantityButton(): boolean {
+    return this.cartItem.quantity === 1;
+  }
+
+  disableIncreaseQuantityButton(): boolean {
+    return this.cartItem.quantity === 4;
+  }
 }

@@ -13,11 +13,11 @@
           {{ cartItem.price * cartItem.quantity | currency: "INR":true }}
         </div>
         <div class="mt-4 d-flex">
-          <button mat-icon-button (click)="decreaseProductQuantity()">
+          <button mat-icon-button (click)="decreaseProductQuantity()" [disabled]="disableDecreaseQuantityButton()">
             <mat-icon class="material-icons"> remove_circle_outline </mat-icon>
           </button>
-          <input class="item-quantity" type="text" autocomplete="off" [(ngModel)]="cartItem.quantity" />
-          <button mat-icon-button (click)="increaseProductQuantity()">
+          <input class="item-quantity" type="text" autocomplete="off" [(ngModel)]="cartItem.quantity" readonly />
+          <button mat-icon-button (click)="increaseProductQuantity()" [disabled]="disableIncreaseQuantityButton()">
             <mat-icon class="material-icons"> add_circle_outline </mat-icon>
           </button>
           <button mat-button class="ml-auto" (click)="confirmRemoveCartItem()">
