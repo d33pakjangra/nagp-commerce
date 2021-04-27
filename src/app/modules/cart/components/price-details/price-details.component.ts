@@ -14,7 +14,7 @@ export class PriceDetailsComponent implements OnInit {
   ngOnInit(): void {}
 
   calculatePrice(): number {
-    return this.cartItems.reduce(function (prev, cur) {
+    return this.cartItems.reduce((prev, cur) => {
       return prev + cur.price * cur.quantity;
     }, 0);
   }

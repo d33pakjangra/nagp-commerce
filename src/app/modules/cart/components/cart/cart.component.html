@@ -8,8 +8,8 @@
           <div class="col-md-12 pb-1" *ngFor="let cartItem of cartItems">
             <app-cart-item
               [cartItem]="cartItem"
-              (onRemoveCartItem)="removeCartItem($event)"
-              (onQuantityChange)="changeProductQuantity($event)"
+              (removeCartItem)="onRemoveCartItem($event)"
+              (quantityChange)="onQuantityChange($event)"
             ></app-cart-item>
           </div>
         </div>

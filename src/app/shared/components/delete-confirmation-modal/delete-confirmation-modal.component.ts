@@ -12,11 +12,11 @@ export class DeleteConfirmationModalComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  yesClick() {
+  yesClick(): void {
     this.dialogRef.close(true);
   }
 
-  noClick() {
+  noClick(): void {
     this.dialogRef.close(false);
   }
 }

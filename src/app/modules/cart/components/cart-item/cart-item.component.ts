@@ -14,8 +14,8 @@ import { DeleteConfirmationModalComponent } from 'src/app/shared/components/dele
 })
 export class CartItemComponent implements OnInit {
   @Input() cartItem: CartItem;
-  @Output() onRemoveCartItem = new EventEmitter<string>();
-  @Output() onQuantityChange = new EventEmitter<CartItem>();
+  @Output() removeCartItem = new EventEmitter<string>();
+  @Output() quantityChange = new EventEmitter<CartItem>();
 
   constructor(private readonly router: Router, private matDialog: MatDialog) {}
 
@@ -25,11 +25,7 @@ export class CartItemComponent implements OnInit {
     this.router.navigate(['/products/', this.cartItem.id]);
   }
 
-  removeCartItem(): void {
-    this.onRemoveCartItem.next(this.cartItem.id);
-  }
-
-  confirmRemoveCartItem() {
+  confirmRemoveCartItem(): void {
     this.matDialog
       .open(DeleteConfirmationModalComponent, {
         width: '450px',
@@ -42,18 +38,18 @@ export class CartItemComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe((confirmed) => {
         if (confirmed) {
-          this.removeCartItem();
+          this.removeCartItem.next(this.cartItem.id);
         }
       });
   }
 
   increaseProductQuantity(): void {
     this.cartItem.quantity = this.cartItem.quantity + 1;
-    this.onQuantityChange.next(this.cartItem);
+    this.quantityChange.next(this.cartItem);
   }
 
   decreaseProductQuantity(): void {
     this.cartItem.quantity = this.cartItem.quantity - 1;
-    this.onQuantityChange.next(this.cartItem);
+    this.quantityChange.next(this.cartItem);
   }
 }
