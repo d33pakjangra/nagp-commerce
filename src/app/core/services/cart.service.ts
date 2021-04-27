@@ -8,7 +8,7 @@ import { IndexedDbService } from './indexed-db.service';
   providedIn: 'root',
 })
 export class CartService {
-  onCartUpdate = new BehaviorSubject<boolean>(false);
+  onCartUpdate = new BehaviorSubject<boolean>(true); //true for loading existing cart item count on app load
 
   constructor(private readonly indexedDbService: IndexedDbService) {}
 
@@ -22,8 +22,8 @@ export class CartService {
           .addUpdateItems<CartItem>(EntityTypes.cartItems, [cartItem])
           .subscribe(
             (success) => {
+              this.onCartUpdate.next(success);
               observer.next(success);
-              this.onCartUpdate.next(true);
             },
             (error) => {
               observer.error(error);
@@ -38,6 +38,19 @@ export class CartService {
       this.indexedDbService.getById<CartItem>(EntityTypes.cartItems, id).subscribe(
         (cartItem) => {
           observer.next(cartItem);
+        },
+        (error) => {
+          observer.error(error);
+        }
+      );
+    });
+  }
+
+  getAllProductFromCart(): Observable<CartItem[]> {
+    return new Observable((observer: Observer<CartItem[]>) => {
+      this.indexedDbService.getAll<CartItem>(EntityTypes.cartItems).subscribe(
+        (cartItems) => {
+          observer.next(cartItems);
         },
         (error) => {
           observer.error(error);

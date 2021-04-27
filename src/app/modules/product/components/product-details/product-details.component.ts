@@ -66,7 +66,7 @@ export class ProductDetailsComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe(
         (success) => {
-          this.notificationService.success('Product successfully added into the cart.');
+          this.notificationService.success('Product added successfully into the cart.');
           this.router.navigate(['/cart']);
         },
         (error) => {

@@ -5,6 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { CountService } from 'src/app/core/services/count.service';
 
 @UntilDestroy()
 @Component({
@@ -16,20 +17,33 @@ export class HeaderComponent implements OnInit {
   @ViewChild(MatMenuTrigger) languagesMenuTrigger: MatMenuTrigger;
   @ViewChild('searchText', { static: false }) searchControl: HTMLInputElement;
 
+  cartItemCount = 0;
   headerName = 'NAGP Commerce';
   searchText: string;
   isLoggedIn = false;
   public onSearchTextChanged = new Subject<string>();
 
-  constructor(public translate: TranslateService, private readonly router: Router, private readonly authService: AuthService) {
-    this.subscribeLogin();
-  }
+  constructor(
+    public translate: TranslateService,
+    private readonly router: Router,
+    private readonly authService: AuthService,
+    private readonly countService: CountService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscribeLogin();
+    this.subscribeCartItemCount();
+  }
 
   subscribeLogin(): void {
     this.authService.isLoggedIn.pipe(untilDestroyed(this)).subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
+    });
+  }
+
+  subscribeCartItemCount(): void {
+    this.countService.onCartItemCountChange.pipe(untilDestroyed(this)).subscribe((count) => {
+      this.cartItemCount = count;
     });
   }
 
