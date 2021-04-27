@@ -106,7 +106,7 @@ export class IndexedDbService {
     });
   }
 
-  getById<T>(entityType: string, id: number): Observable<T> {
+  getById<T>(entityType: string, id: string): Observable<T> {
     return new Observable((observer: Observer<T>) => {
       const connectionRequest = indexedDB.open(this.dbName);
 

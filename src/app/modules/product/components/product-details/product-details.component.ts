@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { CartItem } from 'src/app/core/models/cart-item';
 import { Product } from 'src/app/core/models/product';
+import { CartService } from 'src/app/core/services/cart.service';
+import { LoggerService } from 'src/app/core/services/logger.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ProductService } from 'src/app/core/services/product.service';
 
@@ -16,18 +19,21 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
+    private readonly router: Router,
     private readonly productService: ProductService,
-    private readonly notificationService: NotificationService
+    private readonly notificationService: NotificationService,
+    private readonly cartService: CartService,
+    private readonly logger: LoggerService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const id = +params.id;
+      const id = params.id;
       this.getProductDetail(id);
     });
   }
 
-  getProductDetail(id: number): void {
+  getProductDetail(id: string): void {
     this.productService
       .getProductById(id)
       .pipe(untilDestroyed(this))
@@ -42,6 +48,31 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    // this.productService.addToCart(product);
+    const cartItem: CartItem = {
+      id: product.id,
+      category: product.category,
+      name: product.name,
+      description: product.description,
+      imageUrl: product.imageUrl,
+      brand: product.brand,
+      color: product.color,
+      price: product.price,
+      rating: product.rating,
+      quantity: 1,
+    };
+
+    this.cartService
+      .addProductToCart(cartItem)
+      .pipe(untilDestroyed(this))
+      .subscribe(
+        (success) => {
+          this.notificationService.success('Product successfully added into the cart.');
+          this.router.navigate(['/cart']);
+        },
+        (error) => {
+          this.notificationService.danger('Error while adding product into the cart.');
+          this.logger.error('Error while adding product into the cart: ', error);
+        }
+      );
   }
 }
