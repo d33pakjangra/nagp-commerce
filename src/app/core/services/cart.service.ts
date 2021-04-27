@@ -8,7 +8,7 @@ import { IndexedDbService } from './indexed-db.service';
   providedIn: 'root',
 })
 export class CartService {
-  onCartUpdate = new BehaviorSubject<boolean>(true); //true for loading existing cart item count on app load
+  onCartUpdate = new BehaviorSubject<boolean>(true); // true for loading existing cart item count on app load
 
   constructor(private readonly indexedDbService: IndexedDbService) {}
 

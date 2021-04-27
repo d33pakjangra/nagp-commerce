@@ -12,7 +12,7 @@ export class CountService {
     this.watchCartItemCount();
   }
 
-  watchCartItemCount() {
+  watchCartItemCount(): void {
     this.cartService.onCartUpdate.subscribe((isCartUpdated: boolean) => {
       if (isCartUpdated) {
         this.cartService.getAllProductFromCart().subscribe((cartItems) => {
