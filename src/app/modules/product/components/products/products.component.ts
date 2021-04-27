@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { TranslateService } from '@ngx-translate/core';
 import { Product } from 'src/app/core/models/product';
 import { NotificationService } from 'src/app/core/services/notification.service';
 import { ProductService } from 'src/app/core/services/product.service';
+
 @UntilDestroy()
 @Component({
   selector: 'app-products',
@@ -13,22 +13,19 @@ import { ProductService } from 'src/app/core/services/product.service';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   displayedProducts: Product[] = [];
-  showingResultsFor = '';
+  showingResultsFor = 'ALL_PRODUCTS';
+  selectedSortBy = 'PRICE_LTH';
 
-  constructor(
-    private readonly productService: ProductService,
-    private readonly notificationService: NotificationService,
-    private translateService: TranslateService
-  ) {}
+  constructor(private readonly productService: ProductService, private readonly notificationService: NotificationService) {}
 
   ngOnInit(): void {
-    this.showingResultsFor = this.translateService.instant('PRODUCT.ALL_PRODUCTS');
     this.getAllProducts();
   }
 
   filterByCategory(category: string): void {
     this.showingResultsFor = category;
     this.displayedProducts = this.products.filter((product) => product.category === category);
+    this.sortProductsBy(this.selectedSortBy);
   }
 
   getAllProducts(): void {
@@ -39,10 +36,30 @@ export class ProductsComponent implements OnInit {
         (products) => {
           this.products = products;
           this.displayedProducts = this.products;
+          this.sortProductsBy(this.selectedSortBy);
         },
         (error) => {
           this.notificationService.danger(`Error while fetching products: ${error}`);
         }
       );
+  }
+
+  sortProductsBy(sortBy: string): void {
+    this.selectedSortBy = sortBy;
+
+    switch (sortBy.toLowerCase()) {
+      case 'price_lth':
+        this.displayedProducts = this.displayedProducts.sort((p1, p2) => p1.price - p2.price);
+        break;
+      case 'price_htl':
+        this.displayedProducts = this.displayedProducts.sort((p1, p2) => p2.price - p1.price);
+        break;
+      case 'rating_htl':
+        this.displayedProducts = this.displayedProducts.sort((p1, p2) => p2.rating - p1.rating);
+        break;
+      default:
+        this.displayedProducts = this.displayedProducts.sort((p1, p2) => p1.price - p2.price);
+        break;
+    }
   }
 }

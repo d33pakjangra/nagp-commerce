@@ -53,6 +53,10 @@
     "YES": "Yes",
     "NO": "No",
     "ARE_YOU_SURE": "Are you sure you want to delete this item ?",
-    "DELETE_CONFIRMATION": "Delete Confirmation"
+    "DELETE_CONFIRMATION": "Delete Confirmation",
+    "SORT_BY": "Sort By",
+    "PRICE_LTH": "Price (Low to High)",
+    "PRICE_HTL": "Price (High to Low)",
+    "RATING_HTL": "Rating (High to Low)"
   }
 }

@@ -33,11 +33,11 @@
             <mat-panel-title> {{ "PRODUCT.FASHION" | translate }} </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-list>
-            <mat-list-item class="clickable hoverable" (click)="filterByCategory('T-Shirt')">{{
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('T-Shirts')">{{
               "PRODUCT.T-SHIRTS" | translate
             }}</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Shirt')">{{
+            <mat-list-item class="clickable hoverable" (click)="filterByCategory('Shirts')">{{
               "PRODUCT.SHIRTS" | translate
             }}</mat-list-item>
             <mat-divider></mat-divider>
@@ -48,8 +48,21 @@
     </div>
   </mat-drawer>
   <mat-drawer-content class="mat-drawer-content">
-    <div class="row">
-      <div class="col-md-12 p-2">{{ "SHARED.SHOWING_RESULTS" | translate }}: {{ showingResultsFor }}</div>
+    <div class="d-flex p-2">
+      <div>{{ "SHARED.SHOWING_RESULTS" | translate }}: {{ "PRODUCT." + showingResultsFor | uppercase | translate }}</div>
+      <div class="flex-fill"></div>
+      <div [matMenuTriggerFor]="menu">{{ "SHARED.SORT_BY" | translate }}: {{ "SHARED." + selectedSortBy | translate }}</div>
+      <mat-menu #menu="matMenu" overlapTrigger="false">
+        <span>
+          <button mat-menu-item (click)="sortProductsBy('PRICE_LTH')">{{ "SHARED.PRICE_LTH" | translate }}</button>
+        </span>
+        <span>
+          <button mat-menu-item (click)="sortProductsBy('PRICE_HTL')">{{ "SHARED.PRICE_HTL" | translate }}</button>
+        </span>
+        <span>
+          <button mat-menu-item (click)="sortProductsBy('RATING_HTL')">{{ "SHARED.RATING_HTL" | translate }}</button>
+        </span>
+      </mat-menu>
     </div>
     <div *ngIf="!displayedProducts || displayedProducts.length == 0" class="row justify-content-center">
       <div>{{ "PRODUCT.NO_PRODUCTS_FOUND" | translate }}</div>
