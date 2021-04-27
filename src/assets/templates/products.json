@@ -8,7 +8,8 @@
     "brand": "Apple",
     "color": "Space Grey",
     "price": "75000",
-    "rating": "5"
+    "rating": "5",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "c1434700-a7eb-41db-89eb-32f7c343e008",
@@ -19,7 +20,8 @@
     "brand": "RealMe",
     "color": "Red",
     "price": "15000",
-    "rating": "4"
+    "rating": "4",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "cfae986a-cbbe-4d18-96ae-261aa408048f",
@@ -30,7 +32,8 @@
     "brand": "Motorola",
     "color": "Black",
     "price": "25000",
-    "rating": "3"
+    "rating": "3",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "62a43986-d59c-485f-bda9-44adc136feb7",
@@ -41,7 +44,8 @@
     "brand": "Nokia",
     "color": "Black",
     "price": "35000",
-    "rating": "4"
+    "rating": "4",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "ed1a37c0-1276-48e4-ab04-b2899297abb6",
@@ -52,7 +56,8 @@
     "brand": "Nike",
     "color": "White",
     "price": "890",
-    "rating": "2"
+    "rating": "2",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "1f673f84-1ba1-49d7-9a0f-420549d4d96c",
@@ -63,7 +68,8 @@
     "brand": "Reebok",
     "color": "Black",
     "price": "1090",
-    "rating": "5"
+    "rating": "5",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "0e1e67d7-64d5-4066-babf-070e6f2cf497",
@@ -74,7 +80,8 @@
     "brand": "Adidas",
     "color": "Indigo",
     "price": "2000",
-    "rating": "5"
+    "rating": "5",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "52c6e105-234b-41fc-b9a4-23cedb329262",
@@ -85,7 +92,8 @@
     "brand": "Merino",
     "color": "Blue",
     "price": "1000",
-    "rating": "3"
+    "rating": "3",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "5a887621-272c-4056-981f-44bd507693cf",
@@ -96,7 +104,8 @@
     "brand": "Xiaomi",
     "color": "Grey",
     "price": "98000",
-    "rating": "5"
+    "rating": "5",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "87e36289-e2ec-4d50-b7dc-f07671ef0c69",
@@ -107,7 +116,8 @@
     "brand": "Dell",
     "color": "Grey",
     "price": "78000",
-    "rating": "5"
+    "rating": "5",
+    "seller": "Treasure Haul Online"
   },
   {
     "id": "6c1cf871-48cf-46bf-9058-128a4b7adbb5",
@@ -118,6 +128,7 @@
     "brand": "Meesho",
     "color": "Blue",
     "price": "2200",
-    "rating": "4"
+    "rating": "4",
+    "seller": "Treasure Haul Online"
   }
 ]

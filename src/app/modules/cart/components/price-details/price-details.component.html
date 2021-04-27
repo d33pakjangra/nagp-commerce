@@ -1,0 +1,17 @@
+<ul class="list-group mb-3">
+  <li class="list-group-item d-flex justify-content-between">
+    <span>
+      {{ "PRODUCT.PRICE" | translate }}
+      ({{ cartItems.length }} {{ cartItems.length > 1 ? ("CART.ITEMS" | translate) : ("CART.ITEM" | translate) }})
+    </span>
+    <span>{{ calculatePrice() | currency: "INR":true }}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between lh-condensed">
+    <span> {{ "CART.DELIVERY_CHARGES" | translate }} </span>
+    <span class="text-success">{{ "CART.FREE" | translate }}</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between lh-condensed">
+    <span class="font-weight-bold"> {{ "CART.TOTAL_AMOUNT" | translate }} </span>
+    <span class="font-weight-bold">{{ calculatePrice() | currency: "INR":true }}</span>
+  </li>
+</ul>

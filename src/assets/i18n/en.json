@@ -14,8 +14,6 @@
     "SEARCH_PRODUCTS": "Search products here",
     "PRICE": "Price",
     "BRAND": "Brand",
-    "CART": "Cart",
-    "ADD_TO_CART": "Add to Cart",
     "PRODUCT_DETAILS": "Product Details",
     "DESCRIPTION": "Description",
     "CATEGORY": "Category",
@@ -31,11 +29,24 @@
     "SHIRTS": "Shirts",
     "JEANS": "Jeans",
     "ALL_PRODUCTS": "All products",
-    "NO_PRODUCTS_FOUND": "No products found.."
+    "NO_PRODUCTS_FOUND": "No products found..",
+    "SELLER": "Seller"
+  },
+  "CART": {
+    "CART": "Cart",
+    "ADD_TO_CART": "Add to Cart",
+    "MY_CART": "My Cart",
+    "PRICE_DETAILS": "Price Details",
+    "DELIVERY_CHARGES": "Delivery Charges",
+    "TOTAL_AMOUNT": "Total Amount",
+    "FREE": "FREE",
+    "ITEM": "Item",
+    "ITEMS": "Items"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
     "NAME": "Name",
-    "SHOWING_RESULTS": "Showing results"
+    "SHOWING_RESULTS": "Showing results",
+    "REMOVE": "Remove"
   }
 }

@@ -6,6 +6,7 @@ export interface Product {
   imageUrl: string;
   brand: string;
   color: string;
-  price: string;
+  price: number;
   rating: number;
+  seller: string;
 }

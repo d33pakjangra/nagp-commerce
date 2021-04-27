@@ -59,6 +59,7 @@ export class ProductDetailsComponent implements OnInit {
       price: product.price,
       rating: product.rating,
       quantity: 1,
+      seller: product.seller,
     };
 
     this.cartService

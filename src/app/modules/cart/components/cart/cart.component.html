@@ -1,1 +1,22 @@
-<p>cart works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <mat-list>
+        <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.MY_CART" | translate }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <div class="row">
+          <div class="col-md-12 pb-1" *ngFor="let cartItem of cartItems">
+            <app-cart-item [cartItem]="cartItem"></app-cart-item>
+          </div>
+        </div>
+      </mat-list>
+    </div>
+    <div class="col-md-3">
+      <mat-list>
+        <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.PRICE_DETAILS" | translate }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <app-price-details></app-price-details>
+      </mat-list>
+    </div>
+  </div>
+</div>

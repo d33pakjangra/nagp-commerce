@@ -14,8 +14,6 @@
     "SEARCH_PRODUCTS": "उत्पादों को यहां खोजें",
     "PRICE": "कीमत",
     "BRAND": "ब्रांड",
-    "CART": "कार्ट",
-    "ADD_TO_CART": "कार्ट में डालें",
     "PRODUCT_DETAILS": "उत्पाद विवरण",
     "DESCRIPTION": "विवरण",
     "CATEGORY": "वर्ग",
@@ -31,11 +29,24 @@
     "SHIRTS": "शर्ट्स",
     "JEANS": "जीन्स",
     "ALL_PRODUCTS": "सभी प्रोडक्ट",
-    "NO_PRODUCTS_FOUND": "कोई उत्पाद नहीं मिला ।।"
+    "NO_PRODUCTS_FOUND": "कोई उत्पाद नहीं मिला ।।",
+    "SELLER": "विक्रेता"
+  },
+  "CART": {
+    "CART": "कार्ट",
+    "ADD_TO_CART": "कार्ट में डालें",
+    "MY_CART": "मेरा कार्ट",
+    "PRICE_DETAILS": "मूल्य विवरण",
+    "DELIVERY_CHARGES": "वितरण शुल्क",
+    "TOTAL_AMOUNT": "कुल राशि",
+    "FREE": "नि: शुल्क",
+    "ITEM": "आइटम",
+    "ITEMS": "आइटम्स"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "भाषा बदलें",
     "NAME": "नाम",
-    "SHOWING_RESULTS": "परिणाम दिखा रहा है"
+    "SHOWING_RESULTS": "परिणाम दिखा रहा है",
+    "REMOVE": "हटाना"
   }
 }
