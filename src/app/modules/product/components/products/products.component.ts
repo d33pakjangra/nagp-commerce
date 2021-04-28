@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
     this.getAllProducts();
   }
 
-  filterByCategory(category: string): void {
+  onFilterByCategory(category: string): void {
     this.showingResultsFor = category;
     this.displayedProducts = this.products.filter((product) => product.category === category);
     this.sortProductsBy(this.selectedSortBy);
