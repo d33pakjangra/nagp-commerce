@@ -63,22 +63,26 @@ export class IndexedDbService {
       const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
-        const database = connectionRequest.result;
+        try {
+          const database = connectionRequest.result;
 
-        const transaction = database.transaction(entityType, 'readwrite');
-        const store = transaction.objectStore(entityType);
-        items.forEach((item) => {
-          store.put(item);
-        });
+          const transaction = database.transaction(entityType, 'readwrite');
+          const store = transaction.objectStore(entityType);
+          items.forEach((item) => {
+            store.put(item);
+          });
 
-        transaction.oncomplete = () => {
-          observer.next(true);
-          observer.complete();
-        };
+          transaction.oncomplete = () => {
+            observer.next(true);
+            observer.complete();
+          };
 
-        transaction.onerror = () => {
-          observer.error(`error while putting item in indexed db store: ${transaction.error}`);
-        };
+          transaction.onerror = () => {
+            observer.error(`error while putting item in indexed db store: ${transaction.error}`);
+          };
+        } catch (e) {
+          observer.error(`error while putting item in indexed db store: ${e}`);
+        }
       };
     });
   }
@@ -88,20 +92,24 @@ export class IndexedDbService {
       const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
-        const database = connectionRequest.result;
+        try {
+          const database = connectionRequest.result;
 
-        const transaction = database.transaction(entityType);
-        const store = transaction.objectStore(entityType);
-        const entities = store.getAll();
+          const transaction = database.transaction(entityType);
+          const store = transaction.objectStore(entityType);
+          const entities = store.getAll();
 
-        entities.onsuccess = (event: any) => {
-          observer.next(event.target.result);
-          observer.complete();
-        };
+          entities.onsuccess = (event: any) => {
+            observer.next(event.target.result);
+            observer.complete();
+          };
 
-        entities.onerror = () => {
-          observer.error(`error while getting items from indexed db store: ${entities.error}`);
-        };
+          entities.onerror = () => {
+            observer.error(`error while getting items from indexed db store: ${entities.error}`);
+          };
+        } catch (e) {
+          observer.error(`error while getting items from indexed db store: ${e}`);
+        }
       };
     });
   }
@@ -111,19 +119,23 @@ export class IndexedDbService {
       const connectionRequest = indexedDB.open(this.dbName);
 
       connectionRequest.onsuccess = () => {
-        const database = connectionRequest.result;
+        try {
+          const database = connectionRequest.result;
 
-        const transaction = database.transaction(entityType);
-        const store = transaction.objectStore(entityType);
-        const entity = store.get(id);
+          const transaction = database.transaction(entityType);
+          const store = transaction.objectStore(entityType);
+          const entity = store.get(id);
 
-        entity.onsuccess = (event: any) => {
-          observer.next(event.target.result);
-          observer.complete();
-        };
-        entity.onerror = () => {
-          observer.error(`error while getting item from indexed db store: ${entity.error}`);
-        };
+          entity.onsuccess = (event: any) => {
+            observer.next(event.target.result);
+            observer.complete();
+          };
+          entity.onerror = () => {
+            observer.error(`error while getting item from indexed db store: ${entity.error}`);
+          };
+        } catch (e) {
+          observer.error(`error while getting item from indexed db store: ${e}`);
+        }
       };
     });
   }
