@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CartItem } from 'src/app/core/models/cart-item';
 import { CartService } from 'src/app/core/services/cart.service';
@@ -12,7 +13,7 @@ import { CartService } from 'src/app/core/services/cart.service';
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
 
-  constructor(private readonly cartService: CartService) {}
+  constructor(private readonly cartService: CartService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.fetchCartItems();
@@ -34,5 +35,9 @@ export class CartComponent implements OnInit {
 
   onQuantityChange(cartItem: CartItem): void {
     this.cartService.addProductToCart(cartItem).subscribe((success) => {});
+  }
+
+  navigateToCheckout(): void {
+    this.router.navigate(['/cart/checkout']);
   }
 }
