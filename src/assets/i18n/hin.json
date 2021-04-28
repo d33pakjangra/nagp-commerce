@@ -44,7 +44,9 @@
     "ITEMS": "आइटम्स",
     "REMOVE_ITEM": "वस्तु निकालो",
     "ARE_YOU_SURE": "क्या आप वाकई इस आइटम को कार्ट से निकालना चाहते हैं?",
-    "PROCEED_TO_CHECKOUT": "चेक आउट करने के लिए आगे बढ़ें"
+    "PROCEED_TO_CHECKOUT": "चेक आउट करने के लिए आगे बढ़ें",
+    "QUANTITY_CHANGED": "आपने '{{cartItem}}' की मात्रा को '{{quantity}}' में बदल दिया है",
+    "MAX_QUANTITY_REACHED": "हमें खेद है! केवल {{maxAllowedQuantity}} इकाई(ओं) को प्रत्येक ऑर्डर में इस उत्पाद के लिए अनुमति है।"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "भाषा बदलें",

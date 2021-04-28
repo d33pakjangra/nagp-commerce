@@ -56,10 +56,12 @@ body {
 
 .error-snackbar {
   background: $error;
+  color: $white;
 }
 
 .success-snackbar {
   background: $success;
+  color: $white;
 }
 
 .icon-button {

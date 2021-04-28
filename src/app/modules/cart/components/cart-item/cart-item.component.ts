@@ -2,8 +2,10 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { TranslateService } from '@ngx-translate/core';
 import { CartItem } from 'src/app/core/models/cart-item';
 import { DeleteConfirmation } from 'src/app/core/models/delete-confirmation';
+import { NotificationService } from 'src/app/core/services/notification.service';
 import { DeleteConfirmationModalComponent } from 'src/app/shared/components/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @UntilDestroy()
@@ -17,7 +19,12 @@ export class CartItemComponent implements OnInit {
   @Output() removeCartItem = new EventEmitter<string>();
   @Output() quantityChange = new EventEmitter<CartItem>();
 
-  constructor(private readonly router: Router, private matDialog: MatDialog) {}
+  constructor(
+    private readonly router: Router,
+    private readonly matDialog: MatDialog,
+    private readonly notificationService: NotificationService,
+    private readonly translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -44,12 +51,20 @@ export class CartItemComponent implements OnInit {
   }
 
   increaseProductQuantity(): void {
-    this.cartItem.quantity = this.cartItem.quantity + 1;
-    this.quantityChange.next(this.cartItem);
+    if (this.cartItem.quantity === this.cartItem.maxQuantityAllowed) {
+      this.notificationService.danger(
+        this.translateService.instant('CART.MAX_QUANTITY_REACHED', { maxAllowedQuantity: this.cartItem.maxQuantityAllowed })
+      );
+    } else {
+      this.cartItem.quantity = this.cartItem.quantity + 1;
+      this.notifyQuantityChanged();
+      this.quantityChange.next(this.cartItem);
+    }
   }
 
   decreaseProductQuantity(): void {
     this.cartItem.quantity = this.cartItem.quantity - 1;
+    this.notifyQuantityChanged();
     this.quantityChange.next(this.cartItem);
   }
 
@@ -57,7 +72,9 @@ export class CartItemComponent implements OnInit {
     return this.cartItem.quantity === 1;
   }
 
-  disableIncreaseQuantityButton(): boolean {
-    return this.cartItem.quantity === 4;
+  notifyQuantityChanged(): void {
+    this.notificationService.success(
+      this.translateService.instant('CART.QUANTITY_CHANGED', { cartItem: this.cartItem.name, quantity: this.cartItem.quantity })
+    );
   }
 }

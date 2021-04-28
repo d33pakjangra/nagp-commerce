@@ -2,7 +2,7 @@
   <mat-card-content>
     <div class="d-flex row">
       <div class="col-md-4 clickable" (click)="navigateToProductDetails()">
-        <img [src]="cartItem.imageUrl" [alt]="cartItem.name" width="100%" class="img-fluid rounded" />
+        <img [src]="cartItem.imageUrl" [alt]="cartItem.name" width="100%" class="img-fluid rounded item-image" />
       </div>
       <div class="col-md-8">
         <span class="text-uppercase font-weight-bold pb-1 clickable" (click)="navigateToProductDetails()">{{ cartItem.name }}</span>
@@ -17,7 +17,7 @@
             <mat-icon class="material-icons"> remove_circle_outline </mat-icon>
           </button>
           <input class="item-quantity" type="text" autocomplete="off" [(ngModel)]="cartItem.quantity" readonly />
-          <button mat-icon-button (click)="increaseProductQuantity()" [disabled]="disableIncreaseQuantityButton()">
+          <button mat-icon-button (click)="increaseProductQuantity()">
             <mat-icon class="material-icons"> add_circle_outline </mat-icon>
           </button>
           <button mat-button class="ml-auto" (click)="confirmRemoveCartItem()">

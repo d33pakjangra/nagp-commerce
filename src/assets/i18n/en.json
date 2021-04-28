@@ -44,7 +44,9 @@
     "ITEMS": "Items",
     "REMOVE_ITEM": "Remove Item",
     "ARE_YOU_SURE": "Are you sure you want to remove this item from cart ?",
-    "PROCEED_TO_CHECKOUT": "Proceed to Checkout"
+    "PROCEED_TO_CHECKOUT": "Proceed to Checkout",
+    "QUANTITY_CHANGED": "You've changed '{{cartItem}}' QUANTITY to '{{quantity}}'",
+    "MAX_QUANTITY_REACHED": "We're sorry! Only {{maxAllowedQuantity}} unit(s) allowed for this product in each order."
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",

@@ -60,6 +60,7 @@ export class ProductDetailsComponent implements OnInit {
       rating: product.rating,
       quantity: 1,
       seller: product.seller,
+      maxQuantityAllowed: product.maxQuantityAllowed,
     };
 
     this.cartService
