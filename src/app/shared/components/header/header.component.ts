@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
   headerName = 'NAGP Commerce';
   searchText: string;
   isLoggedIn = false;
-  public onSearchTextChanged = new Subject<string>();
 
   constructor(
     public translate: TranslateService,
@@ -45,11 +44,6 @@ export class HeaderComponent implements OnInit {
     this.countService.onCartItemCountChange.pipe(untilDestroyed(this)).subscribe((count) => {
       this.cartItemCount = count;
     });
-  }
-
-  clearSearch(): void {
-    this.searchText = null;
-    this.onSearchTextChanged.next(null);
   }
 
   openLanguagesMenu(): void {

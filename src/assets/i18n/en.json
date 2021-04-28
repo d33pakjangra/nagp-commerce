@@ -43,7 +43,8 @@
     "ITEM": "Item",
     "ITEMS": "Items",
     "REMOVE_ITEM": "Remove Item",
-    "ARE_YOU_SURE": "Are you sure you want to remove this item from cart ?"
+    "ARE_YOU_SURE": "Are you sure you want to remove this item from cart ?",
+    "PROCEED_TO_CHECKOUT": "Proceed to Checkout"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",

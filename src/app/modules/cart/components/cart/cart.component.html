@@ -22,6 +22,11 @@
             <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.PRICE_DETAILS" | translate }}</mat-list-item>
             <mat-divider></mat-divider>
             <app-price-details [cartItems]="cartItems"></app-price-details>
+            <button mat-raised-button color="primary">
+              <span>{{ "CART.PROCEED_TO_CHECKOUT" | translate }}</span
+              >&nbsp;
+              <mat-icon class="material-icons"> arrow_forward </mat-icon>
+            </button>
           </mat-list>
         </div>
       </div>
