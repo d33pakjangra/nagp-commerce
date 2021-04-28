@@ -70,7 +70,7 @@
       <div>{{ "PRODUCT.NO_PRODUCTS_FOUND" | translate }}</div>
     </div>
     <div class="row">
-      <div class="col-md-4 p-2" *ngFor="let product of displayedProducts">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 p-2" *ngFor="let product of displayedProducts">
         <app-product [product]="product"></app-product>
       </div></div
   ></mat-drawer-content>
