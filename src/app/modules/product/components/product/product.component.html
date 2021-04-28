@@ -8,9 +8,10 @@
     <div class="d-flex">
       <div class="p-2 text-success align-self-center price">{{ product.price | currency: "INR":true }}</div>
       <div class="ml-auto p-2">
-        <div [ngClass]="'rating pl-2 rating-' + product.rating">
-          {{ product.rating }}
-          <mat-icon class="material-icons rating-icon"> star_rate </mat-icon>&nbsp;
+        <div [ngClass]="'d-flex pl-2 rating-' + product.rating">
+          <div class="rating">{{ product.rating }}</div>
+          &nbsp;
+          <div><mat-icon class="material-icons rating-icon"> star_rate </mat-icon></div>
         </div>
       </div>
     </div>

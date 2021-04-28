@@ -77,8 +77,8 @@ body {
 }
 
 .rating {
-  font-size: medium;
-  border-radius: 10%;
+  font-size: 17px;
+  padding-top: 5px;
 }
 
 .rating-icon {
@@ -88,22 +88,25 @@ body {
 
 .rating-5,
 .rating-4 {
-  background-color: $success;
-  color: $white;
-  height: 30px;
+  background-color: $success !important;
+  color: $white !important;
+  height: 28px;
+  border-radius: 10%;
 }
 
 .rating-3 {
-  background-color: $warning;
-  color: $white;
-  height: 30px;
+  background-color: $warning !important;
+  color: $white !important;
+  height: 28px;
+  border-radius: 10%;
 }
 
 .rating-1,
 .rating-2 {
-  background-color: $error;
-  color: $white;
-  height: 30px;
+  background-color: $error !important;
+  color: $white !important;
+  height: 28px;
+  border-radius: 10%;
 }
 
 ::-webkit-scrollbar {

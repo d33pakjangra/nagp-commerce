@@ -6,10 +6,15 @@
       </div>
       <div class="col-md-8">
         <span class="text-uppercase font-weight-bold pb-1 clickable" (click)="navigateToProductDetails()">{{ cartItem.name }}</span>
-        <div class="pb-3 text-secondary">
+        <div class="text-secondary pb-2">
           {{ "PRODUCT.SELLER" | translate }}: <span class="text-uppercase">{{ cartItem.seller }}</span>
         </div>
-        <div class="text-success font-weight-bold">
+        <div [ngClass]="'d-flex cart-item-rating pl-2 rating-' + cartItem.rating">
+          <div class="rating">{{ cartItem.rating }}</div>
+          &nbsp;
+          <div><mat-icon class="material-icons rating-icon"> star_rate </mat-icon></div>
+        </div>
+        <div class="text-success font-weight-bold pt-2">
           {{ cartItem.price * cartItem.quantity | currency: "INR":true }}
         </div>
         <div class="mt-4 d-flex">
