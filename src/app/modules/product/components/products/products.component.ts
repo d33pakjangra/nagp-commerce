@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Product } from 'src/app/core/models/product';
 import { NotificationService } from 'src/app/core/services/notification.service';
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   showingResultsFor = 'ALL_PRODUCTS';
   selectedSortBy = 'PRICE_LTH';
 
-  constructor(private readonly productService: ProductService, private readonly notificationService: NotificationService) {}
+  constructor(private readonly route: ActivatedRoute, private readonly notificationService: NotificationService) {}
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -29,19 +30,16 @@ export class ProductsComponent implements OnInit {
   }
 
   getAllProducts(): void {
-    this.productService
-      .getAllProducts()
-      .pipe(untilDestroyed(this))
-      .subscribe(
-        (products) => {
-          this.products = products;
-          this.displayedProducts = this.products;
-          this.sortProductsBy(this.selectedSortBy);
-        },
-        (error) => {
-          this.notificationService.danger(`Error while fetching products: ${error}`);
-        }
-      );
+    this.route.data.subscribe(
+      (data) => {
+        this.products = data.products;
+        this.displayedProducts = this.products;
+        this.sortProductsBy(this.selectedSortBy);
+      },
+      (error) => {
+        this.notificationService.danger(`Error while fetching products: ${error}`);
+      }
+    );
   }
 
   sortProductsBy(sortBy: string): void {

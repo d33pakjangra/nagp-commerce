@@ -6,7 +6,6 @@ import { Product } from 'src/app/core/models/product';
 import { CartService } from 'src/app/core/services/cart.service';
 import { LoggerService } from 'src/app/core/services/logger.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { ProductService } from 'src/app/core/services/product.service';
 
 @UntilDestroy()
 @Component({
@@ -20,7 +19,6 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly productService: ProductService,
     private readonly notificationService: NotificationService,
     private readonly cartService: CartService,
     private readonly logger: LoggerService
@@ -34,17 +32,14 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetail(id: string): void {
-    this.productService
-      .getProductById(id)
-      .pipe(untilDestroyed(this))
-      .subscribe(
-        (product) => {
-          this.product = product;
-        },
-        (error) => {
-          this.notificationService.danger(`Error while fetching product detail: ${error}`);
-        }
-      );
+    this.route.data.subscribe(
+      (data) => {
+        this.product = data.product;
+      },
+      (error) => {
+        this.notificationService.danger(`Error while fetching product detail: ${error}`);
+      }
+    );
   }
 
   addToCart(product: Product): void {
