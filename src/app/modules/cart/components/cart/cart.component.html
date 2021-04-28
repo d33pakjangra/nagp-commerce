@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     <div class="col-md-9">
       <mat-list>
-        <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.MY_CART" | translate }}</mat-list-item>
+        <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.MY_CART" | translate }} ({{ cartItems.length }})</mat-list-item>
         <mat-divider></mat-divider>
         <div class="row">
           <div class="col-md-12 pb-1" *ngFor="let cartItem of cartItems">
@@ -16,11 +16,15 @@
       </mat-list>
     </div>
     <div class="col-md-3">
-      <mat-list>
-        <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.PRICE_DETAILS" | translate }}</mat-list-item>
-        <mat-divider></mat-divider>
-        <app-price-details [cartItems]="cartItems"></app-price-details>
-      </mat-list>
+      <div class="row">
+        <div class="col-md-3 position-fixed">
+          <mat-list>
+            <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.PRICE_DETAILS" | translate }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <app-price-details [cartItems]="cartItems"></app-price-details>
+          </mat-list>
+        </div>
+      </div>
     </div>
   </div>
 </div>
