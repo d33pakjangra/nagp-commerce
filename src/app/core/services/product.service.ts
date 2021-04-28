@@ -15,6 +15,7 @@ export class ProductService {
       this.indexedDbService.getAll<Product>(EntityTypes.products).subscribe(
         (products) => {
           observer.next(products);
+          observer.complete();
         },
         (error) => {
           observer.error(error);
@@ -28,6 +29,7 @@ export class ProductService {
       this.indexedDbService.getById<Product>(EntityTypes.products, id).subscribe(
         (product) => {
           observer.next(product);
+          observer.complete();
         },
         (error) => {
           observer.error(error);

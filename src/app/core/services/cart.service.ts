@@ -20,6 +20,7 @@ export class CartService {
           (success) => {
             this.onCartUpdate.next(success);
             observer.next(success);
+            observer.complete();
           },
           (error) => {
             observer.error(error);
@@ -33,6 +34,7 @@ export class CartService {
       this.indexedDbService.getById<CartItem>(EntityTypes.cartItems, id).subscribe(
         (cartItem) => {
           observer.next(cartItem);
+          observer.complete();
         },
         (error) => {
           observer.error(error);
@@ -46,6 +48,7 @@ export class CartService {
       this.indexedDbService.getAll<CartItem>(EntityTypes.cartItems).subscribe(
         (cartItems) => {
           observer.next(cartItems);
+          observer.complete();
         },
         (error) => {
           observer.error(error);
