@@ -51,7 +51,9 @@
     <div class="d-flex p-2">
       <div>{{ "SHARED.SHOWING_RESULTS" | translate }}: {{ "PRODUCT." + showingResultsFor | uppercase | translate }}</div>
       <div class="flex-fill"></div>
-      <div [matMenuTriggerFor]="menu">{{ "SHARED.SORT_BY" | translate }}: {{ "SHARED." + selectedSortBy | translate }}</div>
+      <div [matMenuTriggerFor]="menu" class="clickable">
+        {{ "SHARED.SORT_BY" | translate }}: {{ "SHARED." + selectedSortBy | translate }}
+      </div>
       <mat-menu #menu="matMenu" overlapTrigger="false">
         <span>
           <button mat-menu-item (click)="sortProductsBy('PRICE_LTH')">{{ "SHARED.PRICE_LTH" | translate }}</button>
