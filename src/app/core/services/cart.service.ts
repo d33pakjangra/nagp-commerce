@@ -56,5 +56,6 @@ export class CartService {
 
   removeCartItemById(id: string): void {
     this.indexedDbService.deleteItemByKey(EntityTypes.cartItems, id).subscribe((success) => {});
+    this.onCartUpdate.next(true);
   }
 }
