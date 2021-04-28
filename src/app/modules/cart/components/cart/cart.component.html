@@ -1,5 +1,10 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="!cartItems.length">
+    <div class="col-md-12 d-flex justify-content-center align-items-center pt-5 mt-5">
+      <img class="empty-cart" src="/assets/images/empty_cart.png" />
+    </div>
+  </div>
+  <div class="row" *ngIf="cartItems.length">
     <div class="col-md-9">
       <mat-list>
         <mat-list-item class="font-weight-bold text-uppercase">{{ "CART.MY_CART" | translate }} ({{ cartItems.length }})</mat-list-item>
