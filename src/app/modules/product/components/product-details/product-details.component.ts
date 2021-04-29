@@ -41,18 +41,8 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(product: Product): void {
     const cartItem: CartItem = {
-      id: product.id,
-      category: product.category,
-      name: product.name,
-      description: product.description,
-      imageUrl: product.imageUrl,
-      brand: product.brand,
-      color: product.color,
-      price: product.price,
-      rating: product.rating,
+      ...product,
       quantity: 1,
-      seller: product.seller,
-      maxQuantityAllowed: product.maxQuantityAllowed,
     };
 
     this.cartService

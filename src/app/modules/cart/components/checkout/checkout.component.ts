@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem } from 'src/app/core/models/cart-item';
 import { ComponentCanDeactivate } from 'src/app/shared/guards/unsaved-changes.guard';
@@ -13,22 +13,22 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
   checkoutForm: FormGroup;
   cartItems: CartItem[] = [];
 
-  constructor(private readonly route: ActivatedRoute) {}
+  constructor(private readonly route: ActivatedRoute, private readonly formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     this.fetchCartItems();
 
-    this.checkoutForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-      pincode: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
-      locality: new FormControl('', [Validators.required]),
-      address: new FormControl('', [Validators.required]),
-      city: new FormControl('', [Validators.required]),
-      state: new FormControl('', [Validators.required]),
-      landmark: new FormControl(''),
-      alternatePhone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10)]),
-      addressType: new FormControl(1),
+    this.checkoutForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
+      pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      locality: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      landmark: [''],
+      alternatePhone: ['', [Validators.minLength(10), Validators.maxLength(10)]],
+      addressType: [1],
     });
   }
 
