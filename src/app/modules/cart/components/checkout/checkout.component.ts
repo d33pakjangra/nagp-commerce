@@ -2,7 +2,16 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem } from 'src/app/core/models/cart-item';
+import { Order } from 'src/app/core/models/order';
+import { ShippingAddress } from 'src/app/core/models/shipping-address';
+import { OrderService } from 'src/app/core/services/order.service';
 import { ComponentCanDeactivate } from 'src/app/shared/guards/unsaved-changes.guard';
+import { v4 as uuid } from 'uuid';
+import * as moment from 'moment';
+import { NotificationService } from 'src/app/core/services/notification.service';
+import { TranslateService } from '@ngx-translate/core';
+import { LoggerService } from 'src/app/core/services/logger.service';
+import { CartService } from 'src/app/core/services/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,8 +21,17 @@ import { ComponentCanDeactivate } from 'src/app/shared/guards/unsaved-changes.gu
 export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
   checkoutForm: FormGroup;
   cartItems: CartItem[] = [];
+  shippingAddress: ShippingAddress;
 
-  constructor(private readonly route: ActivatedRoute, private readonly formBuilder: FormBuilder) {}
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly formBuilder: FormBuilder,
+    private readonly orderService: OrderService,
+    private readonly notificationService: NotificationService,
+    private readonly translateService: TranslateService,
+    private readonly logger: LoggerService,
+    private readonly cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.fetchCartItems();
@@ -45,7 +63,23 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
 
   checkout(): void {
     if (this.checkoutForm.valid) {
-      console.log(this.checkoutForm);
+      this.shippingAddress = { ...this.shippingAddress, ...this.checkoutForm.value };
+      const order: Order = { id: uuid(), orderedOn: moment().toLocaleString(), orderItems: [] };
+
+      this.cartItems.forEach((cartItem) => {
+        order.orderItems.push({ ...cartItem, isDelivered: false, expectedDelivery: moment().add(7, 'days').toLocaleString() });
+      });
+
+      this.orderService.createOrder(order).subscribe(
+        (success) => {
+          this.cartService.removeCartItemsByIds(this.cartItems.map((cartItem) => cartItem.id));
+          this.notificationService.success(this.translateService.instant('ORDER.ORDER_SUCCESS'));
+        },
+        (error) => {
+          this.notificationService.danger(this.translateService.instant('ORDER.ORDER_FAILED'));
+          this.logger.error('Error while placing order:', error);
+        }
+      );
     }
   }
 }

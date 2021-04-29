@@ -51,6 +51,10 @@
     "FILL_YOUR_DA": "Fill your delivery address",
     "SUBMIT_ORDER": "Submit Order"
   },
+  "ORDER": {
+    "ORDER_SUCCESS": "Your order has been placed successfully.",
+    "ORDER_FAILED": "We are sorry ! we couldn't accept your order at the moment. Please try after some time."
+  },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
     "NAME": "Name",

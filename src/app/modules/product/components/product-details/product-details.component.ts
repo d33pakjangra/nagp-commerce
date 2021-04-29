@@ -19,7 +19,6 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private readonly route: ActivatedRoute,
     private readonly router: Router,
-    private readonly notificationService: NotificationService,
     private readonly cartService: CartService,
     private readonly logger: LoggerService
   ) {}
@@ -34,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
         this.product = data.product;
       },
       (error) => {
-        this.notificationService.danger(`Error while fetching product detail: ${error}`);
+        this.logger.error('Error while fetching product detail: ', error);
       }
     );
   }
@@ -53,7 +52,6 @@ export class ProductDetailsComponent implements OnInit {
           this.router.navigate(['/cart']);
         },
         (error) => {
-          this.notificationService.danger('Error while adding product into the cart.');
           this.logger.error('Error while adding product into the cart: ', error);
         }
       );

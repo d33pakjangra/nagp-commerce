@@ -140,7 +140,7 @@ export class IndexedDbService {
     });
   }
 
-  deleteExistingItems(entityType: string, items: string[]): Observable<boolean> {
+  deleteItemsByKeys(entityType: string, ids: string[]): Observable<boolean> {
     return new Observable((observer: Observer<boolean>) => {
       const connectionRequest = indexedDB.open(this.dbName);
 
@@ -151,8 +151,8 @@ export class IndexedDbService {
           const transaction = database.transaction(entityType, 'readwrite');
           const store = transaction.objectStore(entityType);
 
-          items.forEach((item) => {
-            store.delete(item);
+          ids.forEach((id) => {
+            store.delete(id);
           });
 
           transaction.oncomplete = () => {
