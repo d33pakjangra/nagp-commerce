@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
 
   constructor(
-    public translate: TranslateService,
+    public readonly translate: TranslateService,
     private readonly router: Router,
     private readonly authService: AuthService,
     private readonly countService: CountService

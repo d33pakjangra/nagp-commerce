@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/core/models/cart-item';
 import { Order } from 'src/app/core/models/order';
 import { ShippingAddress } from 'src/app/core/models/shipping-address';
@@ -30,7 +30,8 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
     private readonly notificationService: NotificationService,
     private readonly translateService: TranslateService,
     private readonly logger: LoggerService,
-    private readonly cartService: CartService
+    private readonly cartService: CartService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -74,6 +75,8 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
         (success) => {
           this.cartService.removeCartItemsByIds(this.cartItems.map((cartItem) => cartItem.id));
           this.notificationService.success(this.translateService.instant('ORDER.ORDER_SUCCESS'));
+          this.checkoutForm.reset();
+          this.navigateToOrders();
         },
         (error) => {
           this.notificationService.danger(this.translateService.instant('ORDER.ORDER_FAILED'));
@@ -82,4 +85,10 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
       );
     }
   }
+
+  navigateToOrders(): void {
+    this.router.navigate(['/orders']);
+  }
+
+  clearForm(): void {}
 }
