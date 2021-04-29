@@ -76,6 +76,8 @@
     "WORK_ADDRESS_DELIVERY": "Work (Delivery between 10 AM - 5 PM)",
     "REQUIRED_FIELD": "Please fill out this field",
     "NOT_VALID_PIN": "Not a valid pincode",
-    "NOT_VALID_PHONE": "Not a valid phone number"
+    "NOT_VALID_PHONE": "Not a valid phone number",
+    "UNSAVED_CHANGES": "Unsaved Changes",
+    "UNSAVED_CHANGES_MESSAGE": "You have unsaved changes. Press 'NO' to go back and save these changes, or 'YES' to lose these changes."
   }
 }

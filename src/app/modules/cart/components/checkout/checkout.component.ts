@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem } from 'src/app/core/models/cart-item';
+import { ComponentCanDeactivate } from 'src/app/shared/guards/unsaved-changes.guard';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
   checkoutForm: FormGroup;
   cartItems: CartItem[] = [];
 
@@ -29,6 +30,11 @@ export class CheckoutComponent implements OnInit {
       alternatePhone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10)]),
       addressType: new FormControl(1),
     });
+  }
+
+  @HostListener('window:beforeunload')
+  canDeactivate(): boolean {
+    return !this.checkoutForm.dirty;
   }
 
   fetchCartItems(): void {

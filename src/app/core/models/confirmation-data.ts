@@ -1,4 +1,4 @@
-export interface DeleteConfirmation {
+export interface ConfirmationData {
   header?: string;
   message?: string;
   saveButtonText?: string;

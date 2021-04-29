@@ -8,7 +8,7 @@ import { PageLayoutComponent } from './components/page-layout/page-layout.compon
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ElevationDirective } from './directives/elevation.directive';
-import { DeleteConfirmationModalComponent } from './components/delete-confirmation-modal/delete-confirmation-modal.component';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { NumberOnlyDirective } from './directives/number-only.directive';
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
     PageLayoutComponent,
     ElevationDirective,
     NumberOnlyDirective,
-    DeleteConfirmationModalComponent,
+    ConfirmationModalComponent,
   ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
   entryComponents: [],
@@ -31,7 +31,7 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
     TranslateModule,
     ElevationDirective,
     NumberOnlyDirective,
-    DeleteConfirmationModalComponent,
+    ConfirmationModalComponent,
   ],
 })
 export class SharedModule {}

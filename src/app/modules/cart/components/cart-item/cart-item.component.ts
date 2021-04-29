@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { TranslateService } from '@ngx-translate/core';
 import { CartItem } from 'src/app/core/models/cart-item';
-import { DeleteConfirmation } from 'src/app/core/models/delete-confirmation';
+import { ConfirmationData } from 'src/app/core/models/confirmation-data';
 import { NotificationService } from 'src/app/core/services/notification.service';
-import { DeleteConfirmationModalComponent } from 'src/app/shared/components/delete-confirmation-modal/delete-confirmation-modal.component';
+import { ConfirmationModalComponent } from 'src/app/shared/components/confirmation-modal/confirmation-modal.component';
 
 @UntilDestroy()
 @Component({
@@ -34,12 +34,12 @@ export class CartItemComponent implements OnInit {
 
   confirmRemoveCartItem(): void {
     this.matDialog
-      .open(DeleteConfirmationModalComponent, {
+      .open(ConfirmationModalComponent, {
         width: '450px',
         data: {
           header: 'CART.REMOVE_ITEM',
           message: 'CART.ARE_YOU_SURE',
-        } as DeleteConfirmation,
+        } as ConfirmationData,
       })
       .afterClosed()
       .pipe(untilDestroyed(this))
