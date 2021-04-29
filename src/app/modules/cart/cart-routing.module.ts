@@ -12,7 +12,13 @@ const routes: Routes = [
       cartItems: CartItemsResolver,
     },
   },
-  { path: 'checkout', component: CheckoutComponent },
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
+    resolve: {
+      cartItems: CartItemsResolver,
+    },
+  },
   { path: '**', redirectTo: '' },
 ];
 

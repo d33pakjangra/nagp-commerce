@@ -46,7 +46,9 @@
     "ARE_YOU_SURE": "क्या आप वाकई इस आइटम को कार्ट से निकालना चाहते हैं?",
     "PROCEED_TO_CHECKOUT": "चेक आउट करने के लिए आगे बढ़ें",
     "QUANTITY_CHANGED": "आपने '{{cartItem}}' की मात्रा को '{{quantity}}' में बदल दिया है",
-    "MAX_QUANTITY_REACHED": "हमें खेद है! केवल {{maxAllowedQuantity}} इकाई(ओं) को प्रत्येक ऑर्डर में इस उत्पाद के लिए अनुमति है।"
+    "MAX_QUANTITY_REACHED": "हमें खेद है! केवल {{maxAllowedQuantity}} इकाई(ओं) को प्रत्येक ऑर्डर में इस उत्पाद के लिए अनुमति है।",
+    "CHECKOUT": "चेक आउट",
+    "FILL_YOUR_DA": "अपना वितरण पता भरें"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "भाषा बदलें",
@@ -60,6 +62,16 @@
     "SORT_BY": "इसके अनुसार क्रमबद्ध करें",
     "PRICE_LTH": "मूल्य (निम्न से उच्च)",
     "PRICE_HTL": "मूल्य (उच्च से निम्न)",
-    "RATING_HTL": "रेटिंग (उच्च से निम्न)"
+    "RATING_HTL": "रेटिंग (उच्च से निम्न)",
+    "10_DIGIT_PHONE": "10 अंकों का मोबाइल नंबर",
+    "PINCODE": "पिन कोड",
+    "LOCALITY": "इलाका",
+    "ADDRESS_AREA_STREET": "पता (क्षेत्र और सड़क)",
+    "CITY_DISTRICT_TOWN": "शहर / जिला / नगर",
+    "STATE": "राज्य",
+    "LANDMARK_OPTIONAL": "मील का पत्थर (वैकल्पिक)",
+    "ALTERNATE_PHONE_OPTIONAL": "वैकल्पिक फोन (वैकल्पिक)",
+    "HOME_ADDRESS_DELIVERY": "होम (पूरे दिन की डिलीवरी)",
+    "WORK_ADDRESS_DELIVERY": "काम (डिलीवरी सुबह 10 बजे - शाम 5 बजे के बीच)"
   }
 }

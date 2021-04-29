@@ -46,7 +46,9 @@
     "ARE_YOU_SURE": "Are you sure you want to remove this item from cart ?",
     "PROCEED_TO_CHECKOUT": "Proceed to Checkout",
     "QUANTITY_CHANGED": "You've changed '{{cartItem}}' QUANTITY to '{{quantity}}'",
-    "MAX_QUANTITY_REACHED": "We're sorry! Only {{maxAllowedQuantity}} unit(s) allowed for this product in each order."
+    "MAX_QUANTITY_REACHED": "We're sorry! Only {{maxAllowedQuantity}} unit(s) allowed for this product in each order.",
+    "CHECKOUT": "Checkout",
+    "FILL_YOUR_DA": "Fill your delivery address"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
@@ -60,6 +62,16 @@
     "SORT_BY": "Sort By",
     "PRICE_LTH": "Price (Low to High)",
     "PRICE_HTL": "Price (High to Low)",
-    "RATING_HTL": "Rating (High to Low)"
+    "RATING_HTL": "Rating (High to Low)",
+    "PHONE": "10-digit mobile number",
+    "PINCODE": "Pincode",
+    "LOCALITY": "Locality",
+    "ADDRESS_AREA_STREET": "Address (Area and Street)",
+    "CITY_DISTRICT_TOWN": "City/District/Town",
+    "STATE": "State",
+    "LANDMARK_OPTIONAL": "Landmark (Optional)",
+    "ALTERNATE_PHONE_OPTIONAL": "Alternate Phone (Optional)",
+    "HOME_ADDRESS_DELIVERY": "Home (All day delivery)",
+    "WORK_ADDRESS_DELIVERY": "Work (Delivery between 10 AM - 5 PM)"
   }
 }
