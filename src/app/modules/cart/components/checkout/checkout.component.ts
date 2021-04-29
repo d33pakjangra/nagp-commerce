@@ -20,14 +20,14 @@ export class CheckoutComponent implements OnInit {
     this.checkoutForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-      pincode: new FormControl('', [Validators.required]),
+      pincode: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]),
       locality: new FormControl('', [Validators.required]),
       address: new FormControl('', [Validators.required]),
       city: new FormControl('', [Validators.required]),
       state: new FormControl('', [Validators.required]),
       landmark: new FormControl(''),
-      alternatePhone: new FormControl(''),
-      addressType: new FormControl('', [Validators.required]),
+      alternatePhone: new FormControl('', [Validators.minLength(10), Validators.maxLength(10)]),
+      addressType: new FormControl(1),
     });
   }
 
@@ -37,5 +37,9 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  checkout(): void {}
+  checkout(): void {
+    if (this.checkoutForm.valid) {
+      console.log(this.checkoutForm);
+    }
+  }
 }

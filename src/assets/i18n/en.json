@@ -48,7 +48,8 @@
     "QUANTITY_CHANGED": "You've changed '{{cartItem}}' QUANTITY to '{{quantity}}'",
     "MAX_QUANTITY_REACHED": "We're sorry! Only {{maxAllowedQuantity}} unit(s) allowed for this product in each order.",
     "CHECKOUT": "Checkout",
-    "FILL_YOUR_DA": "Fill your delivery address"
+    "FILL_YOUR_DA": "Fill your delivery address",
+    "SUBMIT_ORDER": "Submit Order"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "Change language",
@@ -72,6 +73,9 @@
     "LANDMARK_OPTIONAL": "Landmark (Optional)",
     "ALTERNATE_PHONE_OPTIONAL": "Alternate Phone (Optional)",
     "HOME_ADDRESS_DELIVERY": "Home (All day delivery)",
-    "WORK_ADDRESS_DELIVERY": "Work (Delivery between 10 AM - 5 PM)"
+    "WORK_ADDRESS_DELIVERY": "Work (Delivery between 10 AM - 5 PM)",
+    "REQUIRED_FIELD": "Please fill out this field",
+    "NOT_VALID_PIN": "Not a valid pincode",
+    "NOT_VALID_PHONE": "Not a valid phone number"
   }
 }

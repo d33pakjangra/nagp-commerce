@@ -9,8 +9,16 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ElevationDirective } from './directives/elevation.directive';
 import { DeleteConfirmationModalComponent } from './components/delete-confirmation-modal/delete-confirmation-modal.component';
+import { NumberOnlyDirective } from './directives/number-only.directive';
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, PageLayoutComponent, ElevationDirective, DeleteConfirmationModalComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    PageLayoutComponent,
+    ElevationDirective,
+    NumberOnlyDirective,
+    DeleteConfirmationModalComponent,
+  ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
   entryComponents: [],
   exports: [
@@ -22,6 +30,8 @@ import { DeleteConfirmationModalComponent } from './components/delete-confirmati
     RouterModule,
     TranslateModule,
     ElevationDirective,
+    NumberOnlyDirective,
+    DeleteConfirmationModalComponent,
   ],
 })
 export class SharedModule {}

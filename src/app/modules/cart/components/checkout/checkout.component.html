@@ -14,13 +14,21 @@
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.NAME" | translate }}</mat-label>
-                <input matInput />
+                <input matInput formControlName="name" name="name" />
+                <mat-error *ngIf="this.checkoutForm.get('name').hasError('required')">{{ "SHARED.REQUIRED_FIELD" | translate }}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.PHONE" | translate }}</mat-label>
-                <input matInput />
+                <input matInput appNumberOnly formControlName="phone" name="phone" />
+                <mat-error *ngIf="this.checkoutForm.get('phone').hasError('required')">{{ "SHARED.REQUIRED_FIELD" | translate }}</mat-error>
+                <mat-error *ngIf="this.checkoutForm.get('phone').hasError('maxlength')">{{
+                  "SHARED.NOT_VALID_PHONE" | translate
+                }}</mat-error>
+                <mat-error *ngIf="this.checkoutForm.get('phone').hasError('minlength')">{{
+                  "SHARED.NOT_VALID_PHONE" | translate
+                }}</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -28,13 +36,25 @@
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.PINCODE" | translate }}</mat-label>
-                <input matInput />
+                <input matInput appNumberOnly formControlName="pincode" name="pincode" />
+                <mat-error *ngIf="this.checkoutForm.get('pincode').hasError('required')">{{
+                  "SHARED.REQUIRED_FIELD" | translate
+                }}</mat-error>
+                <mat-error *ngIf="this.checkoutForm.get('pincode').hasError('maxlength')">{{
+                  "SHARED.NOT_VALID_PINCODE" | translate
+                }}</mat-error>
+                <mat-error *ngIf="this.checkoutForm.get('pincode').hasError('minlength')">{{
+                  "SHARED.NOT_VALID_PINCODE" | translate
+                }}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.LOCALITY" | translate }}</mat-label>
-                <input matInput />
+                <input matInput formControlName="locality" name="locality" />
+                <mat-error *ngIf="this.checkoutForm.get('locality').hasError('required')">{{
+                  "SHARED.REQUIRED_FIELD" | translate
+                }}</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -42,7 +62,10 @@
             <div class="col-md-12">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.ADDRESS_AREA_STREET" | translate }}</mat-label>
-                <textarea matInput></textarea>
+                <textarea matInput formControlName="address" name="address"></textarea>
+                <mat-error *ngIf="this.checkoutForm.get('address').hasError('required')">{{
+                  "SHARED.REQUIRED_FIELD" | translate
+                }}</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -50,13 +73,15 @@
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.CITY_DISTRICT_TOWN" | translate }}</mat-label>
-                <input matInput />
+                <input matInput formControlName="city" name="city" />
+                <mat-error *ngIf="this.checkoutForm.get('city').hasError('required')">{{ "SHARED.REQUIRED_FIELD" | translate }}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.STATE" | translate }}</mat-label>
-                <input matInput />
+                <input matInput formControlName="state" name="state" />
+                <mat-error *ngIf="this.checkoutForm.get('state').hasError('required')">{{ "SHARED.REQUIRED_FIELD" | translate }}</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -64,22 +89,42 @@
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.LANDMARK_OPTIONAL" | translate }}</mat-label>
-                <input matInput />
+                <input matInput formControlName="landmark" name="landmark" />
+                <mat-error *ngIf="this.checkoutForm.get('landmark').hasError('required')">{{
+                  "SHARED.REQUIRED_FIELD" | translate
+                }}</mat-error>
               </mat-form-field>
             </div>
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <mat-label>{{ "SHARED.ALTERNATE_PHONE_OPTIONAL" | translate }}</mat-label>
-                <input matInput />
+                <input matInput appNumberOnly formControlName="alternatePhone" name="alternatePhone" />
+                <mat-error *ngIf="this.checkoutForm.get('alternatePhone').hasError('maxlength')">{{
+                  "SHARED.NOT_VALID_PHONE" | translate
+                }}</mat-error>
+                <mat-error *ngIf="this.checkoutForm.get('alternatePhone').hasError('minlength')">{{
+                  "SHARED.NOT_VALID_PHONE" | translate
+                }}</mat-error>
               </mat-form-field>
             </div>
           </div>
           <div class="row pt-3">
             <div class="col-md-12">
-              <mat-radio-group aria-label="Select an option">
-                <mat-radio-button class="pr-3" value="1">{{ "SHARED.HOME_ADDRESS_DELIVERY" | translate }}</mat-radio-button>
+              <mat-radio-group aria-label="Select an option" formControlName="addressType">
+                <mat-radio-button class="pr-3" value="1" [checked]="true">{{
+                  "SHARED.HOME_ADDRESS_DELIVERY" | translate
+                }}</mat-radio-button>
                 <mat-radio-button value="2">{{ "SHARED.WORK_ADDRESS_DELIVERY" | translate }}</mat-radio-button>
               </mat-radio-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-end">
+              <button mat-raised-button color="primary" type="submit">
+                <span>{{ "CART.SUBMIT_ORDER" | translate }}</span
+                >&nbsp;
+                <mat-icon class="material-icons"> check_circle </mat-icon>
+              </button>
             </div>
           </div>
         </form>

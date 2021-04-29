@@ -48,7 +48,8 @@
     "QUANTITY_CHANGED": "आपने '{{cartItem}}' की मात्रा को '{{quantity}}' में बदल दिया है",
     "MAX_QUANTITY_REACHED": "हमें खेद है! केवल {{maxAllowedQuantity}} इकाई(ओं) को प्रत्येक ऑर्डर में इस उत्पाद के लिए अनुमति है।",
     "CHECKOUT": "चेक आउट",
-    "FILL_YOUR_DA": "अपना वितरण पता भरें"
+    "FILL_YOUR_DA": "अपना वितरण पता भरें",
+    "SUBMIT_ORDER": "आदेश प्रस्तुत"
   },
   "SHARED": {
     "CHANGE_LANGUAGE": "भाषा बदलें",
@@ -72,6 +73,9 @@
     "LANDMARK_OPTIONAL": "मील का पत्थर (वैकल्पिक)",
     "ALTERNATE_PHONE_OPTIONAL": "वैकल्पिक फोन (वैकल्पिक)",
     "HOME_ADDRESS_DELIVERY": "होम (पूरे दिन की डिलीवरी)",
-    "WORK_ADDRESS_DELIVERY": "काम (डिलीवरी सुबह 10 बजे - शाम 5 बजे के बीच)"
+    "WORK_ADDRESS_DELIVERY": "काम (डिलीवरी सुबह 10 बजे - शाम 5 बजे के बीच)",
+    "REQUIRED_FIELD": "कृपया इस क्षेत्र को भरें।",
+    "NOT_VALID_PIN": "मान्य पिनकोड नहीं है।",
+    "NOT_VALID_PHONE": "वैध फोन नंबर नहीं है।"
   }
 }
