@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit {
       (data) => {
         this.orders = data.orders;
         console.log(this.orders);
-        //TODO: Add sort by date
+        // TODO: Add sort by date
       },
       (error) => {
         this.logger.error(`Error while fetching products: ${error}`);
