@@ -9,8 +9,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ElevationDirective } from './directives/elevation.directive';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { NumberOnlyDirective } from './directives/number-only.directive';
+import { LoaderComponent } from './components/loader/loader.component';
 @NgModule({
-  declarations: [HeaderComponent, PageLayoutComponent, ElevationDirective, NumberOnlyDirective, ConfirmationModalComponent],
+  declarations: [
+    HeaderComponent,
+    PageLayoutComponent,
+    ElevationDirective,
+    NumberOnlyDirective,
+    ConfirmationModalComponent,
+    LoaderComponent,
+  ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, RouterModule, TranslateModule],
   entryComponents: [],
   exports: [
@@ -24,6 +32,7 @@ import { NumberOnlyDirective } from './directives/number-only.directive';
     ElevationDirective,
     NumberOnlyDirective,
     ConfirmationModalComponent,
+    LoaderComponent,
   ],
 })
 export class SharedModule {}

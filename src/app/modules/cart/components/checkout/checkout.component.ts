@@ -12,6 +12,7 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 import { TranslateService } from '@ngx-translate/core';
 import { LoggerService } from 'src/app/core/services/logger.service';
 import { CartService } from 'src/app/core/services/cart.service';
+import { LoaderService } from 'src/app/core/services/loader.service';
 
 @Component({
   selector: 'app-checkout',
@@ -32,7 +33,8 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
     private readonly translateService: TranslateService,
     private readonly logger: LoggerService,
     private readonly cartService: CartService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly loader: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +67,7 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
 
   checkout(): void {
     if (this.checkoutForm.valid) {
+      this.loader.showLoader();
       this.shippingAddress = { ...this.shippingAddress, ...this.checkoutForm.value };
       const order: Order = { id: uuid(), orderedOn: moment().toLocaleString(), orderItems: [] };
 
@@ -77,11 +80,13 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
           this.cartService.removeCartItemsByIds(this.cartItems.map((cartItem) => cartItem.id));
           this.notificationService.success(this.translateService.instant('ORDER.ORDER_SUCCESS'));
           this.resetForm();
+          this.loader.hideLoader();
           this.navigateToOrders();
         },
         (error) => {
           this.notificationService.danger(this.translateService.instant('ORDER.ORDER_FAILED'));
           this.logger.error('Error while placing order:', error);
+          this.loader.hideLoader();
         }
       );
     }

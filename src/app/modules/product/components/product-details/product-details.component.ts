@@ -4,8 +4,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CartItem } from 'src/app/core/models/cart-item';
 import { Product } from 'src/app/core/models/product';
 import { CartService } from 'src/app/core/services/cart.service';
+import { LoaderService } from 'src/app/core/services/loader.service';
 import { LoggerService } from 'src/app/core/services/logger.service';
-import { NotificationService } from 'src/app/core/services/notification.service';
 
 @UntilDestroy()
 @Component({
@@ -20,7 +20,8 @@ export class ProductDetailsComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly cartService: CartService,
-    private readonly logger: LoggerService
+    private readonly logger: LoggerService,
+    private readonly loader: LoaderService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,8 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
+    this.loader.showLoader();
+
     const cartItem: CartItem = {
       ...product,
       quantity: 1,
@@ -49,9 +52,11 @@ export class ProductDetailsComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe(
         (success) => {
+          this.loader.hideLoader();
           this.router.navigate(['/cart']);
         },
         (error) => {
+          this.loader.hideLoader();
           this.logger.error('Error while adding product into the cart: ', error);
         }
       );
