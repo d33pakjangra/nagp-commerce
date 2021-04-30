@@ -1,0 +1,34 @@
+<mat-card class="mat-card-order" appElevation raisedElevation="10">
+  <mat-card-content>
+    <div class="d-flex row">
+      <div class="col-md-2">
+        <img [src]="orderItem.imageUrl" [alt]="orderItem.name" class="img-fluid rounded item-image" />
+      </div>
+      <div class="col-md-10">
+        <div class="d-flex">
+          <div class="text-uppercase font-weight-bold pb-1">{{ orderItem.name }}</div>
+          <div class="d-flex ml-auto justify-content-end">
+            <span class="text-uppercase font-weight-bold">{{ "ORDER.ORDER_ID" | translate }}: </span> &nbsp; {{ orderId }}
+          </div>
+        </div>
+        <div class="d-flex">
+          <div class="text-secondary pb-2">
+            {{ "PRODUCT.SELLER" | translate }}: <span class="text-uppercase">{{ orderItem.seller }}</span>
+          </div>
+          <div class="d-flex ml-auto justify-content-end delivery">
+            <span class="text-uppercase font-weight-bold">{{ "ORDER.EXPECTED_DELIVERY_ON" | translate }}: </span> &nbsp;
+            {{ orderItem.expectedDelivery | date | uppercase }}
+          </div>
+        </div>
+        <div [ngClass]="'d-flex item-rating pl-2 rating-' + orderItem.rating">
+          <div class="rating">{{ orderItem.rating }}</div>
+          &nbsp;
+          <div><mat-icon class="material-icons rating-icon"> star_rate </mat-icon></div>
+        </div>
+        <div class="text-success font-weight-bold pt-2">
+          {{ orderItem.price * orderItem.quantity | currency: "INR":true }}
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

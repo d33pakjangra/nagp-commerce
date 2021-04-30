@@ -52,6 +52,10 @@
     "SUBMIT_ORDER": "Submit Order"
   },
   "ORDER": {
+    "ORDER_ID": "Order Id",
+    "MY_ORDERS": "My Orders",
+    "NO_ORDERS_PLACED": "You have placed no orders.",
+    "EXPECTED_DELIVERY_ON": "Expected Delivery On",
     "ORDER_SUCCESS": "Your order has been placed successfully.",
     "ORDER_FAILED": "We are sorry ! we couldn't accept your order at the moment. Please try after some time."
   },

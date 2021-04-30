@@ -1,1 +1,5 @@
-<p>order works!</p>
+<div class="row">
+  <div class="col-md-12 pb-1" *ngFor="let orderItem of order.orderItems">
+    <app-order-item [orderItem]="orderItem" [orderId]="order.id"></app-order-item>
+  </div>
+</div>

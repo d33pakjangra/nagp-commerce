@@ -9,7 +9,7 @@
         <div class="text-secondary pb-2">
           {{ "PRODUCT.SELLER" | translate }}: <span class="text-uppercase">{{ cartItem.seller }}</span>
         </div>
-        <div [ngClass]="'d-flex cart-item-rating pl-2 rating-' + cartItem.rating">
+        <div [ngClass]="'d-flex item-rating pl-2 rating-' + cartItem.rating">
           <div class="rating">{{ cartItem.rating }}</div>
           &nbsp;
           <div><mat-icon class="material-icons rating-icon"> star_rate </mat-icon></div>

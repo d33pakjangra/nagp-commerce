@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { Product } from 'src/app/core/models/product';
-import { NotificationService } from 'src/app/core/services/notification.service';
-import { ProductService } from 'src/app/core/services/product.service';
+import { LoggerService } from 'src/app/core/services/logger.service';
 
 @UntilDestroy()
 @Component({
@@ -17,7 +16,7 @@ export class ProductsComponent implements OnInit {
   showingResultsFor = 'ALL_PRODUCTS';
   selectedSortBy = 'PRICE_LTH';
 
-  constructor(private readonly route: ActivatedRoute, private readonly notificationService: NotificationService) {}
+  constructor(private readonly route: ActivatedRoute, private readonly logger: LoggerService) {}
 
   ngOnInit(): void {
     this.getAllProducts();
@@ -37,7 +36,7 @@ export class ProductsComponent implements OnInit {
         this.sortProductsBy(this.selectedSortBy);
       },
       (error) => {
-        this.notificationService.danger(`Error while fetching products: ${error}`);
+        this.logger.error(`Error while fetching products: ${error}`);
       }
     );
   }

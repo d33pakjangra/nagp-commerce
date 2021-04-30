@@ -25,4 +25,18 @@ export class OrderService {
         );
     });
   }
+
+  getAllOrders(): Observable<Order[]> {
+    return new Observable((observer: Observer<Order[]>) => {
+      this.indexedDbService.getAll<Order>(EntityTypes.orders).subscribe(
+        (orders) => {
+          observer.next(orders);
+          observer.complete();
+        },
+        (error) => {
+          observer.error(error);
+        }
+      );
+    });
+  }
 }
