@@ -41,10 +41,10 @@
                   "SHARED.REQUIRED_FIELD" | translate
                 }}</mat-error>
                 <mat-error *ngIf="this.checkoutForm.get('pincode').hasError('maxlength')">{{
-                  "SHARED.NOT_VALID_PINCODE" | translate
+                  "SHARED.NOT_VALID_PIN" | translate
                 }}</mat-error>
                 <mat-error *ngIf="this.checkoutForm.get('pincode').hasError('minlength')">{{
-                  "SHARED.NOT_VALID_PINCODE" | translate
+                  "SHARED.NOT_VALID_PIN" | translate
                 }}</mat-error>
               </mat-form-field>
             </div>

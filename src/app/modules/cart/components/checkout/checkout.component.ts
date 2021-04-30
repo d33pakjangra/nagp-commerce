@@ -1,5 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/core/models/cart-item';
 import { Order } from 'src/app/core/models/order';
@@ -19,6 +19,7 @@ import { CartService } from 'src/app/core/services/cart.service';
   styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
+  @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   checkoutForm: FormGroup;
   cartItems: CartItem[] = [];
   shippingAddress: ShippingAddress;
@@ -75,7 +76,7 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
         (success) => {
           this.cartService.removeCartItemsByIds(this.cartItems.map((cartItem) => cartItem.id));
           this.notificationService.success(this.translateService.instant('ORDER.ORDER_SUCCESS'));
-          this.checkoutForm.reset();
+          this.resetForm();
           this.navigateToOrders();
         },
         (error) => {
@@ -90,5 +91,7 @@ export class CheckoutComponent implements OnInit, ComponentCanDeactivate {
     this.router.navigate(['/orders']);
   }
 
-  clearForm(): void {}
+  resetForm(): void {
+    this.formGroupDirective.resetForm();
+  }
 }
