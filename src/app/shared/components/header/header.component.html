@@ -27,6 +27,19 @@
       <span>{{ "LOGIN.LOGIN" | translate }}</span>
     </button>
   </div>
+  <div *ngIf="isLoggedIn" class="username d-flex clickable" [matMenuTriggerFor]="userMenuTrigger" (mouseenter)="openUserMenu()">
+    <div>{{ username }}</div>
+    &nbsp;
+    <div><mat-icon [inline]="true" class="material-icons"> expand_more </mat-icon></div>
+    <mat-menu #userMenuTrigger="matMenu" overlapTrigger="false">
+      <span>
+        <button mat-menu-item (click)="navigateToOrders()">{{ "ORDER.MY_ORDERS" | translate }}</button>
+      </span>
+      <span>
+        <button mat-menu-item (click)="logout()">{{ "LOGIN.LOGOUT" | translate }}</button>
+      </span>
+    </mat-menu>
+  </div>
   <div class="flex-fill d-flex flex-row-reverse">
     <div class="icon-menu-cal d-flex align-items-center justify-content-center">
       <button class="icon-inner-cal" mat-icon-button matTooltip="{{ 'CART.CART' | translate }}" (click)="navigateToCart()">
@@ -44,12 +57,12 @@
         class="icon-inner-cal"
         mat-icon-button
         matTooltip="{{ 'SHARED.CHANGE_LANGUAGE' | translate }}"
-        [matMenuTriggerFor]="menu"
-        (click)="openLanguagesMenu()"
+        [matMenuTriggerFor]="languagesMenuTrigger"
       >
         <mat-icon class="material-icons"> language </mat-icon>
+        <mat-icon [inline]="true" class="material-icons"> expand_more </mat-icon>
       </button>
-      <mat-menu #menu="matMenu" overlapTrigger="false">
+      <mat-menu #languagesMenuTrigger="matMenu" overlapTrigger="false">
         <span>
           <button mat-menu-item (click)="changeLanguage('en')">English (en)</button>
         </span>
@@ -57,9 +70,6 @@
           <button mat-menu-item (click)="changeLanguage('hin')">हिंदी (hin)</button>
         </span>
       </mat-menu>
-      <button *ngIf="isLoggedIn" class="icon-inner-cal" mat-icon-button matTooltip="{{ 'LOGIN.LOGOUT' | translate }}" (click)="logout()">
-        <mat-icon class="material-icons"> logout </mat-icon>
-      </button>
     </div>
   </div>
 </mat-toolbar>

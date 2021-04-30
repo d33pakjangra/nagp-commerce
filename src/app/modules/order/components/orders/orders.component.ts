@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { Order } from 'src/app/core/models/order';
 import { LoggerService } from 'src/app/core/services/logger.service';
 
@@ -21,8 +22,6 @@ export class OrdersComponent implements OnInit {
     this.route.data.subscribe(
       (data) => {
         this.orders = data.orders;
-        console.log(this.orders);
-        // TODO: Add sort by date
       },
       (error) => {
         this.logger.error(`Error while fetching products: ${error}`);

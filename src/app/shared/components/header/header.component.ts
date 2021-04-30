@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
-import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -14,16 +13,18 @@ import { CountService } from 'src/app/core/services/count.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild(MatMenuTrigger) languagesMenuTrigger: MatMenuTrigger;
+  @ViewChild('languagesMenuTrigger') languagesMenuTrigger: MatMenuTrigger;
+  @ViewChild('userMenuTrigger') userMenuTrigger: MatMenuTrigger;
   @ViewChild('searchText', { static: false }) searchControl: HTMLInputElement;
 
   cartItemCount = 0;
   headerName = 'NAGP Commerce';
   searchText: string;
   isLoggedIn = false;
+  username: string;
 
   constructor(
-    public readonly translate: TranslateService,
+    public readonly translateService: TranslateService,
     private readonly router: Router,
     private readonly authService: AuthService,
     private readonly countService: CountService
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
   subscribeLogin(): void {
     this.authService.isLoggedIn.pipe(untilDestroyed(this)).subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
+      this.username = this.authService.getUsername();
     });
   }
 
@@ -46,12 +48,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  openLanguagesMenu(): void {
-    this.languagesMenuTrigger.openMenu();
-  }
-
   changeLanguage(language: string): void {
-    this.translate.use(language);
+    this.translateService.use(language);
   }
 
   navigateToLogin(): void {
@@ -62,6 +60,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  navigateToOrders(): void {
+    this.router.navigate(['/orders']);
+  }
+
   navigateToCart(): void {
     this.router.navigate(['/cart']);
   }
@@ -69,5 +71,21 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/products']);
+  }
+
+  openLanguageMenu(): void {
+    this.languagesMenuTrigger.openMenu();
+  }
+
+  openUserMenu(): void {
+    this.userMenuTrigger.openMenu();
+  }
+
+  closeLanguageMenu(): void {
+    this.languagesMenuTrigger.closeMenu();
+  }
+
+  closeUserMenu(): void {
+    this.userMenuTrigger.closeMenu();
   }
 }

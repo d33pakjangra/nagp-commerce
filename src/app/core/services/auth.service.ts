@@ -21,16 +21,22 @@ export class AuthService {
     this.isLoggedIn.next(loggedIn);
   }
 
+  getUsername(): string {
+    return localStorage.getItem('name');
+  }
+
   login(username: string, password: string): Observable<boolean> {
     return new Observable((observer: Observer<boolean>) => {
       let isValidUser = false;
       this.indexedDbService.getAll<User>(EntityTypes.users).subscribe(
         (users) => {
-          isValidUser = users.some((user) => user.username === username && user.password === password);
+          const user = users.find((user) => user.username === username && user.password === password);
+          isValidUser = user != null && user != undefined;
           this.logger.info('isValidUser: ', isValidUser);
 
           if (isValidUser) {
             localStorage.setItem('isLoggedIn', 'Yes');
+            localStorage.setItem('name', user.firstName);
             this.isLoggedIn.next(isValidUser);
           }
 
