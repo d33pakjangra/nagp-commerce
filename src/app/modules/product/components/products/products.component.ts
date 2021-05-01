@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Product } from 'src/app/core/models/product';
 import { LoggerService } from 'src/app/core/services/logger.service';
@@ -13,6 +13,7 @@ import { LoggerService } from 'src/app/core/services/logger.service';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   displayedProducts: Product[] = [];
+  isGlobalSearch = false;
   showingResultsFor = 'ALL_PRODUCTS';
   selectedSortBy = 'PRICE_LTH';
 
@@ -23,6 +24,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onFilterByCategory(category: string): void {
+    this.isGlobalSearch = false;
     this.showingResultsFor = category;
     this.displayedProducts = this.products.filter((product) => product.category === category);
     this.sortProductsBy(this.selectedSortBy);
@@ -33,6 +35,7 @@ export class ProductsComponent implements OnInit {
       (data) => {
         this.products = data.products;
         this.displayedProducts = this.products;
+        this.applySearchFilterIfPassed();
         this.sortProductsBy(this.selectedSortBy);
       },
       (error) => {
@@ -57,6 +60,21 @@ export class ProductsComponent implements OnInit {
       default:
         this.displayedProducts = this.displayedProducts.sort((p1, p2) => p1.price - p2.price);
         break;
+    }
+  }
+
+  private applySearchFilterIfPassed(): void {
+    const searchedText = this.route.snapshot.paramMap.get('text');
+    const category = this.route.snapshot.paramMap.get('category');
+
+    if (searchedText && category) {
+      this.isGlobalSearch = true;
+      this.showingResultsFor = searchedText + ' in ' + category;
+      this.displayedProducts = this.displayedProducts.filter(
+        (displayedProduct) =>
+          displayedProduct.name.toLowerCase().includes(searchedText.toLowerCase()) &&
+          displayedProduct.category.toLowerCase() === category.toLowerCase()
+      );
     }
   }
 }

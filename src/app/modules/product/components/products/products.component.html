@@ -4,7 +4,10 @@
   </mat-drawer>
   <mat-drawer-content class="mat-drawer-content">
     <div class="d-flex p-2">
-      <div>{{ "SHARED.SHOWING_RESULTS" | translate }}: {{ "PRODUCT." + showingResultsFor | uppercase | translate }}</div>
+      <div>
+        {{ "SHARED.SHOWING_RESULTS" | translate }}:
+        {{ isGlobalSearch ? showingResultsFor : ("PRODUCT." + showingResultsFor | uppercase | translate) }}
+      </div>
       <div class="flex-fill"></div>
       <div [matMenuTriggerFor]="menu" class="clickable">
         {{ "SHARED.SORT_BY" | translate }}: {{ "SHARED." + selectedSortBy | translate }}

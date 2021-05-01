@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { EntityTypes } from '../constants';
 import { Product } from '../models/product';
+import { SearchResult } from '../models/search-result';
 import { IndexedDbService } from './indexed-db.service';
 
 @Injectable({
@@ -36,5 +37,23 @@ export class ProductService {
         }
       );
     });
+  }
+
+  applySearchFilter(products: Product[], value: string): SearchResult[] {
+    const results: SearchResult[] = [];
+
+    const filterValue = value.toLowerCase();
+    const filteredProducts = products.filter(
+      (product) => product.name.toLowerCase().includes(filterValue) || product.category.toLowerCase().includes(filterValue)
+    );
+    filteredProducts.forEach((filteredProduct) => {
+      results.push({
+        text: filteredProduct.name,
+        category: filteredProduct.category,
+        routerLink: `/products/${filterValue}/${filteredProduct.category}`,
+      });
+    });
+
+    return results;
   }
 }

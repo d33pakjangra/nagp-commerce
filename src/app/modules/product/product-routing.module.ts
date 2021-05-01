@@ -14,6 +14,13 @@ const routes: Routes = [
     },
   },
   {
+    path: ':text/:category',
+    component: ProductsComponent,
+    resolve: {
+      products: ProductsResolver,
+    },
+  },
+  {
     path: ':id',
     component: ProductDetailsComponent,
     resolve: {

@@ -5,6 +5,13 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CountService } from 'src/app/core/services/count.service';
+import { ProductService } from 'src/app/core/services/product.service';
+import { Product } from 'src/app/core/models/product';
+import { LoggerService } from 'src/app/core/services/logger.service';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { SearchResult } from 'src/app/core/models/search-result';
 
 @UntilDestroy()
 @Component({
@@ -15,24 +22,50 @@ import { CountService } from 'src/app/core/services/count.service';
 export class HeaderComponent implements OnInit {
   @ViewChild('languagesMenuTrigger') languagesMenuTrigger: MatMenuTrigger;
   @ViewChild('userMenuTrigger') userMenuTrigger: MatMenuTrigger;
-  @ViewChild('searchText', { static: false }) searchControl: HTMLInputElement;
 
   cartItemCount = 0;
   headerName = 'NAGP Commerce';
-  searchText: string;
+  searchText = new FormControl();
   isLoggedIn = false;
   username: string;
+  products: Product[] = [];
+  searchedResults: Observable<SearchResult[]>;
 
   constructor(
     public readonly translateService: TranslateService,
     private readonly router: Router,
     private readonly authService: AuthService,
-    private readonly countService: CountService
+    private readonly countService: CountService,
+    private readonly productService: ProductService,
+    private readonly logger: LoggerService
   ) {}
 
   ngOnInit(): void {
     this.subscribeLogin();
     this.subscribeCartItemCount();
+    this.getAllProducts();
+    this.subscribeSearchText();
+  }
+
+  subscribeSearchText(): void {
+    this.searchedResults = this.searchText.valueChanges.pipe(
+      startWith(''),
+      map((value) => (value.length >= 2 ? this.productService.applySearchFilter(this.products, value) : []))
+    );
+  }
+
+  getAllProducts(): void {
+    this.productService
+      .getAllProducts()
+      .pipe(untilDestroyed(this))
+      .subscribe(
+        (products) => {
+          this.products = products;
+        },
+        (error) => {
+          this.logger.error('Error while fetching products data: ', error);
+        }
+      );
   }
 
   subscribeLogin(): void {
@@ -71,21 +104,5 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/products']);
-  }
-
-  openLanguageMenu(): void {
-    this.languagesMenuTrigger.openMenu();
-  }
-
-  openUserMenu(): void {
-    this.userMenuTrigger.openMenu();
-  }
-
-  closeLanguageMenu(): void {
-    this.languagesMenuTrigger.closeMenu();
-  }
-
-  closeUserMenu(): void {
-    this.userMenuTrigger.closeMenu();
   }
 }

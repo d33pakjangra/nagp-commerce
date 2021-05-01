@@ -12,13 +12,21 @@
       </div>
       <div class="flex-fill align-items-center">
         <input
-          id="searchText"
           type="text"
-          autocomplete="off"
+          [formControl]="searchText"
+          [matAutocomplete]="auto"
           class="full-width search-input"
-          [(ngModel)]="searchText"
           placeholder="{{ 'PRODUCT.SEARCH_PRODUCTS' | translate }}"
         />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let searchedResult of searchedResults | async"
+            [routerLink]="searchedResult.routerLink"
+            [value]="searchedResult.text"
+          >
+            {{ searchedResult.text }}
+          </mat-option>
+        </mat-autocomplete>
       </div>
     </div>
   </div>
@@ -27,7 +35,7 @@
       <span>{{ "LOGIN.LOGIN" | translate }}</span>
     </button>
   </div>
-  <div *ngIf="isLoggedIn" class="username d-flex clickable" [matMenuTriggerFor]="userMenuTrigger" (mouseenter)="openUserMenu()">
+  <div *ngIf="isLoggedIn" class="username d-flex clickable" [matMenuTriggerFor]="userMenuTrigger">
     <div>{{ username }}</div>
     &nbsp;
     <div><mat-icon [inline]="true" class="material-icons"> expand_more </mat-icon></div>
