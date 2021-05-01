@@ -40,20 +40,29 @@ export class ProductService {
   }
 
   applySearchFilter(products: Product[], value: string): SearchResult[] {
-    const results: SearchResult[] = [];
+    const searchResults: SearchResult[] = [];
 
     const filterValue = value.toLowerCase();
     const filteredProducts = products.filter(
       (product) => product.name.toLowerCase().includes(filterValue) || product.category.toLowerCase().includes(filterValue)
     );
-    filteredProducts.forEach((filteredProduct) => {
-      results.push({
-        text: filteredProduct.name,
-        category: filteredProduct.category,
-        routerLink: `/products/${filterValue}/${filteredProduct.category}`,
+
+    const categories = filteredProducts.map((filteredProduct) => {
+      return filteredProduct.category;
+    });
+    const distinctCategories = [...new Set(categories)];
+
+    distinctCategories.forEach((distinctCategory) => {
+      searchResults.push({
+        text: value,
+        category: distinctCategory,
+        routerLink: `/products/${filterValue}/${distinctCategory}`,
       });
     });
 
-    return results;
+    if (searchResults.length == 0) {
+      searchResults.push({ text: 'No result found', category: '', routerLink: '' });
+    }
+    return searchResults;
   }
 }

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="">
-  <div class="flex-fill d-flex align-items-center justify-content-center clickable" (click)="navigateToHome()">
-    <mat-icon>home</mat-icon>
+  <div class="flex-fill d-flex align-items-center justify-content-center">
+    <mat-icon class="clickable" (click)="navigateToHome()">home</mat-icon>
     <div class="flex-fill align-items-center header-name">
       {{ headerName }}
     </div>
@@ -21,10 +21,15 @@
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option
             *ngFor="let searchedResult of searchedResults | async"
-            [routerLink]="searchedResult.routerLink"
-            [value]="searchedResult.text"
+            [routerLink]="searchedResult.routerLink === '' ? null : searchedResult.routerLink"
+            [value]="searchedResult.routerLink === '' ? '' : searchedResult.text"
           >
-            {{ searchedResult.text }}
+            <div class="d-flex">
+              <div class="me-auto flex-fill">{{ searchedResult.text }}</div>
+              <div *ngIf="searchedResult.routerLink" class="in-category">
+                in {{ "PRODUCT." + searchedResult.category | uppercase | translate }}
+              </div>
+            </div>
           </mat-option>
         </mat-autocomplete>
       </div>
