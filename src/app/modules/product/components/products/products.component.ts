@@ -72,7 +72,7 @@ export class ProductsComponent implements OnInit {
       this.showingResultsFor = searchedText + ' in ' + category;
       this.displayedProducts = this.displayedProducts.filter(
         (displayedProduct) =>
-          displayedProduct.name.toLowerCase().includes(searchedText.toLowerCase()) ||
+          displayedProduct.name.toLowerCase().includes(searchedText.toLowerCase()) &&
           displayedProduct.category.toLowerCase() === category.toLowerCase()
       );
     }

@@ -43,9 +43,7 @@ export class ProductService {
     const searchResults: SearchResult[] = [];
 
     const filterValue = value.toLowerCase();
-    const filteredProducts = products.filter(
-      (product) => product.name.toLowerCase().includes(filterValue) || product.category.toLowerCase().includes(filterValue)
-    );
+    const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(filterValue));
 
     const categories = filteredProducts.map((filteredProduct) => {
       return filteredProduct.category;
