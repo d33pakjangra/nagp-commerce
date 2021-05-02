@@ -54,6 +54,10 @@ export class HeaderComponent implements OnInit {
     );
   }
 
+  navigateToProductsBySearch(routerLink: string): void {
+    this.router.navigate([routerLink]);
+  }
+
   getAllProducts(): void {
     this.productService
       .getAllProducts()

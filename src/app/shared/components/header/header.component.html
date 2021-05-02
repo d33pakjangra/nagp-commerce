@@ -20,6 +20,7 @@
         />
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option
+            (onSelectionChange)="navigateToProductsBySearch(searchedResult.routerLink)"
             *ngFor="let searchedResult of searchedResults | async"
             [routerLink]="searchedResult.routerLink === '' ? null : searchedResult.routerLink"
             [value]="searchedResult.routerLink === '' ? '' : searchedResult.text"
