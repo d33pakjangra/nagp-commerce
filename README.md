@@ -1,4 +1,4 @@
-# NagpCommerce
+# NagpCommerce - Angular 11 + Angular Material + Bootstrap + i18n + IndexedDB for local database
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
 
@@ -6,9 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Product List Screen
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+![Alt Text](https://media.giphy.com/media/rYYQxgdo26htiLMdjj/giphy.gif)
 
 ## Build
 
