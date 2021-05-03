@@ -32,7 +32,7 @@ describe('AuthService', () => {
     });
   });
 
-  it('should return null if not logged in', () => {
+  it('should return name as null if not logged in', () => {
     service.logout();
     const name = service.getUsername();
     expect(name).toEqual(null);
@@ -44,5 +44,10 @@ describe('AuthService', () => {
       expect(name).toEqual('Deepak');
       done();
     });
+  });
+
+  it('should logout and remove flag from local storage', () => {
+    service.logout();
+    expect(localStorage.getItem('isLoggedIn')).toEqual(null);
   });
 });
