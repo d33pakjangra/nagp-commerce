@@ -10,8 +10,7 @@ import { IndexedDbService } from './core/services/indexed-db.service';
 export class AppComponent {
   title = 'nagp-commerce';
 
-  constructor(private readonly indexedDbService: IndexedDbService, public translate: TranslateService) {
-    this.indexedDbService.seedDatabase();
+  constructor(public translate: TranslateService) {
     translate.addLangs(['en', 'hin']);
     translate.setDefaultLang('en');
     const browserLang = translate.getBrowserLang();

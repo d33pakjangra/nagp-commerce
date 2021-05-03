@@ -14,6 +14,7 @@ export class IndexedDbService {
 
   constructor(private readonly logger: LoggerService, private readonly http: HttpClient) {
     this.setupDatabase();
+    this.seedDatabase();
   }
 
   private setupDatabase(): void {
