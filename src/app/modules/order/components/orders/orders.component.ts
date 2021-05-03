@@ -22,6 +22,7 @@ export class OrdersComponent implements OnInit {
     this.route.data.subscribe(
       (data) => {
         this.orders = data.orders;
+        this.orders = this.orders.sort((a, b) => new Date(b.orderedOn).getTime() - new Date(a.orderedOn).getTime());
       },
       (error) => {
         this.logger.error(`Error while fetching products: ${error}`);
