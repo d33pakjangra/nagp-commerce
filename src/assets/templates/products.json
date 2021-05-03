@@ -141,5 +141,44 @@
     "rating": "4",
     "seller": "Treasure Haul Online",
     "maxQuantityAllowed": 4
+  },
+  {
+    "id": "43a40bf5-73a2-4754-bc1b-c2e552abcfe3",
+    "category": "Smartphone",
+    "name": "Samsung S10 Lite",
+    "description": "The 48-megapixel primary shooter ensures you get detail-rich, vibrant, crystal-clear pictures and videos, no matter what time of the day it is. It is also perfect for those times when you want to explore night street photography or just capture everyday situations with great clarity. It comes combined with the ‘Super Steady OIS technology’ built into the hardware of the device that stabilises videos much better than any other smartphone, offering you gimbal-like stability while shooting adventure-packed videos. So, whether you’re riding a bicycle or hiking through the wilderness, Super Steady OIS will be your best friend.",
+    "imageUrl": "https://sm.mashable.com/mashable_in/seo/1/14433/14433_e954.jpg",
+    "brand": "Samsung",
+    "color": "Navy Blue",
+    "price": "42200",
+    "rating": "4",
+    "seller": "R Telecom",
+    "maxQuantityAllowed": 2
+  },
+  {
+    "id": "2690e3de-64af-4a9a-978e-5929731430e5",
+    "category": "Television",
+    "name": "Samsung TV",
+    "description": "The 48-megapixel primary shooter ensures you get detail-rich, vibrant, crystal-clear pictures and videos, no matter what time of the day it is. It is also perfect for those times when you want to explore night street photography or just capture everyday situations with great clarity. It comes combined with the ‘Super Steady OIS technology’ built into the hardware of the device that stabilises videos much better than any other smartphone, offering you gimbal-like stability while shooting adventure-packed videos. So, whether you’re riding a bicycle or hiking through the wilderness, Super Steady OIS will be your best friend.",
+    "imageUrl": "https://img-16.ccm2.net/buR2q8D7sgdih3DMGyuS5W3V0_o=/640x/2d65be9af4a340e6a6ca0c0a4e50edc6/ccm-faq/Smart_TV_Samsung.png",
+    "brand": "Samsung",
+    "color": "Black",
+    "price": "142200",
+    "rating": "5",
+    "seller": "R Telecom",
+    "maxQuantityAllowed": 1
+  },
+  {
+    "id": "7f5f072c-188c-4487-afc3-9c235cd66162",
+    "category": "Laptop",
+    "name": "Dell Laptop",
+    "description": "Dell Laptop 16 GB RAM, 500 GB HDD",
+    "imageUrl": "https://www.laptop-spec.com/wp-content/uploads/2015/11/Dell_XPS_13_9350_Display-HD-640x360.png",
+    "brand": "Dell",
+    "color": "Silver",
+    "price": "122200",
+    "rating": "5",
+    "seller": "R Telecom",
+    "maxQuantityAllowed": 1
   }
 ]
