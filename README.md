@@ -54,5 +54,9 @@
 ![My Orders](https://github.com/d33pakjangra/gifs/blob/master/nagp-commerce/my-orders-screen.gif?raw=true)
 
 ## Development server
+1.  NodeJs
+    - [Download Nodejs](https://nodejs.org/en/download/)
+2.  Angular CLI
+    - [Download Angular CLI](https://cli.angular.io/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install` & `ng serve` for a dev server. Navigate to `http://localhost:4200/`. 
