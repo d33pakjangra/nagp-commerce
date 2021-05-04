@@ -7,12 +7,10 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateTestingModule } from 'ngx-translate-testing';
-import { Router } from '@angular/router';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -33,17 +31,11 @@ describe('LoginComponent', () => {
         },
       ],
     }).compileComponents();
-    // TestBed.overrideComponent(LoginComponent, {
-    //   set: {
-    //     providers: [{ provide: AuthService, useClass: MockAuthService }]
-    //   }
-    // })
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    router = TestBed.get(Router);
     spyOn(router, 'navigateByUrl');
     fixture.detectChanges();
   });
@@ -77,16 +69,6 @@ export class MockAuthService {
     return new Observable((observer: Observer<boolean>) => {
       observer.next(true);
       observer.complete();
-      // if (username.toLowerCase() === 'admin' && password.toLowerCase() === 'admin') {
-      //   console.log('done');
-
-      //   observer.next(true);
-      //   observer.complete();
-      // } else {
-      //   console.log('not done');
-      //   observer.next(false);
-      //   observer.complete();
-      // }
     });
   }
 }

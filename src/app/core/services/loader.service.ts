@@ -11,7 +11,7 @@ export class LoaderService {
 
   constructor(private logger: LoggerService) {}
 
-  public showLoader() {
+  public showLoader(): void {
     if (this.counter === 0) {
       this.loader.next(true);
     }
@@ -19,7 +19,7 @@ export class LoaderService {
     this.logger.log('show loader');
   }
 
-  public hideLoader() {
+  public hideLoader(): void {
     if (this.counter > 0) {
       this.counter--;
     }

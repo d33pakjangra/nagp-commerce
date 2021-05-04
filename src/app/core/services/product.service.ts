@@ -58,7 +58,7 @@ export class ProductService {
       });
     });
 
-    if (searchResults.length == 0) {
+    if (searchResults.length === 0) {
       searchResults.push({ text: 'No result found', category: '', routerLink: '' });
     }
     return searchResults;

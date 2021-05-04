@@ -13,7 +13,7 @@ export class LoaderComponent implements OnInit {
 
   constructor(private readonly loaderService: LoaderService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscribeLoader();
   }
 

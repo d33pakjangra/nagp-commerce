@@ -30,8 +30,8 @@ export class AuthService {
       let isValidUser = false;
       this.indexedDbService.getAll<User>(EntityTypes.users).subscribe(
         (users) => {
-          const user = users.find((user) => user.username === username && user.password === password);
-          isValidUser = user != null && user != undefined;
+          const user = users.find((usr) => usr.username === username && usr.password === password);
+          isValidUser = user !== null && user !== undefined;
           this.logger.info('isValidUser: ', isValidUser);
 
           if (isValidUser) {

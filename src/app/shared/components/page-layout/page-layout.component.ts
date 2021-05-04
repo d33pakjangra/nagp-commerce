@@ -10,7 +10,7 @@ import { LoaderService } from 'src/app/core/services/loader.service';
 export class PageLayoutComponent implements OnInit {
   constructor(private readonly router: Router, private readonly loader: LoaderService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.router.events.subscribe((event) => {
       if (event instanceof RouteConfigLoadStart) {
         this.loader.showLoader();
