@@ -1,7 +1,7 @@
 # NagpCommerce (An e-commerce portal)
 
 ## Live Demo
-- **Demo Url:** [Nagp Commerce](https://608fec77575a240008a371d7--nervous-kare-db2ca0.netlify.app/)
+- **Demo Url:** [Nagp Commerce](https://nervous-kare-db2ca0.netlify.app/)
 - **Username:** admin
 - **Password:** admin
 ## Tech Stack & Libraries Used
