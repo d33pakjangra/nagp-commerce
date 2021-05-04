@@ -28,6 +28,7 @@
 - Products Searching
 - Products Sorting
 - Products Category Filters
+- Product Details
 - Cart
 - Checkout
 - My Orders
